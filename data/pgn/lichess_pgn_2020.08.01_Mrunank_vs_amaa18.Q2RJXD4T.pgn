@@ -1,0 +1,23 @@
+[Event "2020 Summer Marathon"]
+[Site "https://lichess.org/Q2RJXD4T"]
+[Date "2020.08.01"]
+[White "Mrunank"]
+[Black "amaa18"]
+[Result "1-0"]
+[UTCDate "2020.08.01"]
+[UTCTime "12:22:07"]
+[WhiteElo "2054"]
+[BlackElo "2268"]
+[WhiteRatingDiff "+9"]
+[BlackRatingDiff "-8"]
+[BlackTitle "WIM"]
+[Variant "Standard"]
+[TimeControl "60+0"]
+[ECO "E14"]
+[Opening "Queen's Indian Defense: Spassky System"]
+[Termination "Time forfeit"]
+[Annotator "lichess.org"]
+
+1. d4 { [%clk 0:01:00] } Nf6 { [%clk 0:01:00] } 2. c4 { [%clk 0:01:00] } e6 { [%clk 0:00:59] } 3. e3 { [%clk 0:01:00] } b6 { [%clk 0:00:58] } 4. Nf3 { [%clk 0:00:59] } { E14 Queen's Indian Defense: Spassky System } Bb7 { [%clk 0:00:57] } 5. Bd3 { [%clk 0:00:59] } Bb4+ { [%clk 0:00:56] } 6. Bd2 { [%clk 0:00:57] } Bxd2+ { [%clk 0:00:55] } 7. Nbxd2 { [%clk 0:00:57] } O-O { [%clk 0:00:54] } 8. O-O { [%clk 0:00:57] } d6 { [%clk 0:00:54] } 9. Re1 { [%clk 0:00:56] } Nbd7 { [%clk 0:00:54] } 10. h3 { [%clk 0:00:54] } e5 { [%clk 0:00:54] } 11. d5 { [%clk 0:00:53] } a5 { [%clk 0:00:52] } 12. e4 { [%clk 0:00:53] } Nc5 { [%clk 0:00:51] } 13. Qc2 { [%clk 0:00:51] } Bc8 { [%clk 0:00:49] } 14. Nh4 { [%clk 0:00:48] } Nfd7 { [%clk 0:00:48] } 15. Nf5 { [%clk 0:00:47] } Nxd3 { [%clk 0:00:47] } 16. Qxd3 { [%clk 0:00:46] } Nc5 { [%clk 0:00:46] } 17. Qe2 { [%clk 0:00:45] } Bxf5 { [%clk 0:00:46] } 18. exf5 { [%clk 0:00:44] } Qg5 { [%clk 0:00:45] } 19. g4 { [%clk 0:00:41] } h5 { [%clk 0:00:39] } 20. Ne4 { [%clk 0:00:37] } Nxe4 { [%clk 0:00:37] } 21. Qxe4 { [%clk 0:00:37] } hxg4 { [%clk 0:00:36] } 22. Qxg4 { [%clk 0:00:37] } Qh6 { [%clk 0:00:33] } 23. Kh2 { [%clk 0:00:35] } f6 { [%clk 0:00:33] } 24. Rg1 { [%clk 0:00:34] } Kh8 { [%clk 0:00:32] } 25. Qg6 { [%clk 0:00:33] } Qf4+ { [%clk 0:00:31] } 26. Kh1 { [%clk 0:00:28] } Qh4 { [%clk 0:00:27] } 27. Qg4 { [%clk 0:00:26] } Qxg4 { [%clk 0:00:25] } 28. Rxg4 { [%clk 0:00:26] } Kg8 { [%clk 0:00:23] } 29. Kg2 { [%clk 0:00:24] } Rf7 { [%clk 0:00:23] } 30. Kf3 { [%clk 0:00:24] } Kf8 { [%clk 0:00:23] } 31. Rag1 { [%clk 0:00:23] } Ke7 { [%clk 0:00:22] } 32. Rxg7 { [%clk 0:00:22] } Rh8 { [%clk 0:00:22] } 33. Rxf7+ { [%clk 0:00:21] } Kxf7 { [%clk 0:00:22] } 34. Rg3 { [%clk 0:00:19] } Rh4 { [%clk 0:00:20] } 35. b3 { [%clk 0:00:17] } Rd4 { [%clk 0:00:20] } 36. Rg4 { [%clk 0:00:16] } Rd2 { [%clk 0:00:18] } 37. a4 { [%clk 0:00:13] } Rd3+ { [%clk 0:00:17] } 38. Kg2 { [%clk 0:00:13] } Rxb3 { [%clk 0:00:16] } 39. h4 { [%clk 0:00:12] } Rb4 { [%clk 0:00:04] } 40. h5 { [%clk 0:00:11] } b5 { [%clk 0:00:03] } 41. axb5 { [%clk 0:00:09] } a4 { [%clk 0:00:03] } 42. h6 { [%clk 0:00:08] } Rxc4 { [%clk 0:00:03] } 43. Rxc4 { [%clk 0:00:07] } a3 { [%clk 0:00:02] } 44. Ra4 { [%clk 0:00:06] } a2 { [%clk 0:00:02] } 45. Rxa2 { [%clk 0:00:06] } Kg8 { [%clk 0:00:01] } 46. Ra3 { [%clk 0:00:05] } Kh7 { [%clk 0:00:01] } 47. Rh3 { [%clk 0:00:05] } Kh8 { [%clk 0:00:01] } 48. Kf3 { [%clk 0:00:05] } Kh7 { [%clk 0:00:00] } 49. Ke3 { [%clk 0:00:04] } c6 { [%clk 0:00:00] } 50. bxc6 { [%clk 0:00:03] } { White wins on time. } 1-0
+
+
