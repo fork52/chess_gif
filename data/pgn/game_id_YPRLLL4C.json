@@ -1,0 +1,41 @@
+{
+    "id": "YPRLLL4C",
+    "rated": true,
+    "variant": "standard",
+    "speed": "bullet",
+    "perf": "bullet",
+    "createdAt": 1596545248096,
+    "lastMoveAt": 1596545387651,
+    "status": "outoftime",
+    "players": {
+        "white": {
+            "user": {
+                "name": "Mrunank",
+                "id": "mrunank"
+            },
+            "rating": 1973,
+            "ratingDiff": 6
+        },
+        "black": {
+            "user": {
+                "name": "ReasatNabil",
+                "id": "reasatnabil"
+            },
+            "rating": 2007,
+            "ratingDiff": -7
+        }
+    },
+    "winner": "white",
+    "opening": {
+        "eco": "E60",
+        "name": "Indian Game: West Indian Defense",
+        "ply": 4
+    },
+    "moves": "d4 Nf6 c4 g6 e3 Bg7 Bd3 O-O Nf3 d6 O-O Nbd7 Nc3 c5 Re1 cxd4 exd4 e5 dxe5 Ng4 exd6 Nc5 Bc2 Be6 Nd5 Bxd5 cxd5 Qxd6 h3 Nf6 Rb1 Nxd5 Bb3 Nxb3 Qxb3 Nb6 Be3 Rac8 Bxb6 Qxb6 Qxb6 axb6 b3 Rc2 Re7 Rd8 Rxb7 Rxa2 Rxb6 Rd3 Rb8+ Bf8 b4 Rc3 b5 Rcc2 Rf1 Rab2 Ne5 Kg7 Nd7 Bd6 Rb6 Rd2 Rb7 Bb4 b6 Ba5 g3 Rxd7 Rxd7 Rxb6 Rd3 Rf6 Ra3 Bb6 Rb3 Bc5 Kg2 Bd6 Rc1 Be5 Rc8 Re6 Rbb8 h5 Rg8+ Kf6 Rbf8 h4 Rh8 hxg3 fxg3 Bd4 h4 Re2+ Kh3 Re3 Rxf7+ Kxf7 Rh7+",
+    "pgn": "[Event \"Rated Bullet game\"]\n[Site \"https://lichess.org/YPRLLL4C\"]\n[Date \"2020.08.04\"]\n[White \"Mrunank\"]\n[Black \"ReasatNabil\"]\n[Result \"1-0\"]\n[UTCDate \"2020.08.04\"]\n[UTCTime \"12:47:28\"]\n[WhiteElo \"1973\"]\n[BlackElo \"2007\"]\n[WhiteRatingDiff \"+6\"]\n[BlackRatingDiff \"-7\"]\n[Variant \"Standard\"]\n[TimeControl \"60+0\"]\n[ECO \"E60\"]\n[Opening \"Indian Game: West Indian Defense\"]\n[Termination \"Time forfeit\"]\n\n1. d4 { [%clk 0:01:00] } Nf6 { [%clk 0:01:00] } 2. c4 { [%clk 0:01:00] } g6 { [%clk 0:01:00] } 3. e3 { [%clk 0:01:00] } Bg7 { [%clk 0:01:00] } 4. Bd3 { [%clk 0:01:00] } O-O { [%clk 0:00:59] } 5. Nf3 { [%clk 0:01:00] } d6 { [%clk 0:00:59] } 6. O-O { [%clk 0:01:00] } Nbd7 { [%clk 0:00:58] } 7. Nc3 { [%clk 0:01:00] } c5 { [%clk 0:00:58] } 8. Re1 { [%clk 0:01:00] } cxd4 { [%clk 0:00:57] } 9. exd4 { [%clk 0:01:00] } e5 { [%clk 0:00:56] } 10. dxe5 { [%clk 0:00:59] } Ng4 { [%clk 0:00:55] } 11. exd6 { [%clk 0:00:57] } Nc5 { [%clk 0:00:53] } 12. Bc2 { [%clk 0:00:55] } Be6 { [%clk 0:00:51] } 13. Nd5 { [%clk 0:00:51] } Bxd5 { [%clk 0:00:45] } 14. cxd5 { [%clk 0:00:51] } Qxd6 { [%clk 0:00:44] } 15. h3 { [%clk 0:00:51] } Nf6 { [%clk 0:00:43] } 16. Rb1 { [%clk 0:00:49] } Nxd5 { [%clk 0:00:41] } 17. Bb3 { [%clk 0:00:45] } Nxb3 { [%clk 0:00:39] } 18. Qxb3 { [%clk 0:00:44] } Nb6 { [%clk 0:00:37] } 19. Be3 { [%clk 0:00:42] } Rac8 { [%clk 0:00:36] } 20. Bxb6 { [%clk 0:00:41] } Qxb6 { [%clk 0:00:34] } 21. Qxb6 { [%clk 0:00:41] } axb6 { [%clk 0:00:34] } 22. b3 { [%clk 0:00:40] } Rc2 { [%clk 0:00:34] } 23. Re7 { [%clk 0:00:38] } Rd8 { [%clk 0:00:32] } 24. Rxb7 { [%clk 0:00:37] } Rxa2 { [%clk 0:00:31] } 25. Rxb6 { [%clk 0:00:36] } Rd3 { [%clk 0:00:29] } 26. Rb8+ { [%clk 0:00:35] } Bf8 { [%clk 0:00:28] } 27. b4 { [%clk 0:00:33] } Rc3 { [%clk 0:00:23] } 28. b5 { [%clk 0:00:30] } Rcc2 { [%clk 0:00:22] } 29. Rf1 { [%clk 0:00:29] } Rab2 { [%clk 0:00:20] } 30. Ne5 { [%clk 0:00:26] } Kg7 { [%clk 0:00:20] } 31. Nd7 { [%clk 0:00:22] } Bd6 { [%clk 0:00:19] } 32. Rb6 { [%clk 0:00:20] } Rd2 { [%clk 0:00:15] } 33. Rb7 { [%clk 0:00:16] } Bb4 { [%clk 0:00:11] } 34. b6 { [%clk 0:00:13] } Ba5 { [%clk 0:00:09] } 35. g3 { [%clk 0:00:10] } Rxd7 { [%clk 0:00:08] } 36. Rxd7 { [%clk 0:00:08] } Rxb6 { [%clk 0:00:08] } 37. Rd3 { [%clk 0:00:07] } Rf6 { [%clk 0:00:07] } 38. Ra3 { [%clk 0:00:07] } Bb6 { [%clk 0:00:07] } 39. Rb3 { [%clk 0:00:06] } Bc5 { [%clk 0:00:06] } 40. Kg2 { [%clk 0:00:06] } Bd6 { [%clk 0:00:06] } 41. Rc1 { [%clk 0:00:05] } Be5 { [%clk 0:00:06] } 42. Rc8 { [%clk 0:00:05] } Re6 { [%clk 0:00:06] } 43. Rbb8 { [%clk 0:00:04] } h5 { [%clk 0:00:06] } 44. Rg8+ { [%clk 0:00:03] } Kf6 { [%clk 0:00:05] } 45. Rbf8 { [%clk 0:00:03] } h4 { [%clk 0:00:04] } 46. Rh8 { [%clk 0:00:03] } hxg3 { [%clk 0:00:03] } 47. fxg3 { [%clk 0:00:03] } Bd4 { [%clk 0:00:03] } 48. h4 { [%clk 0:00:03] } Re2+ { [%clk 0:00:02] } 49. Kh3 { [%clk 0:00:03] } Re3 { [%clk 0:00:02] } 50. Rxf7+ { [%clk 0:00:02] } Kxf7 { [%clk 0:00:01] } 51. Rh7+ { [%clk 0:00:02] } 1-0\n\n\n",
+    "clock": {
+        "initial": 60,
+        "increment": 0,
+        "totalTime": 60
+    }
+}

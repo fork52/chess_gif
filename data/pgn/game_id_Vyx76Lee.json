@@ -1,0 +1,41 @@
+{
+    "id": "Vyx76Lee",
+    "rated": true,
+    "variant": "standard",
+    "speed": "bullet",
+    "perf": "bullet",
+    "createdAt": 1596545682855,
+    "lastMoveAt": 1596545766497,
+    "status": "resign",
+    "players": {
+        "white": {
+            "user": {
+                "name": "Mrunank",
+                "id": "mrunank"
+            },
+            "rating": 1990,
+            "ratingDiff": 6
+        },
+        "black": {
+            "user": {
+                "name": "KingArts",
+                "id": "kingarts"
+            },
+            "rating": 2007,
+            "ratingDiff": -6
+        }
+    },
+    "winner": "white",
+    "opening": {
+        "eco": "A50",
+        "name": "Indian Game: Normal Variation",
+        "ply": 3
+    },
+    "moves": "d4 Nf6 c4 e6 e3 Be7 Nf3 d5 Bd3 c6 O-O O-O Nc3 Nbd7 cxd5 exd5 Re1 Re8 e4 dxe4 Nxe4 Nxe4 Bxe4 Nf6 Bd3 Bd6 Bg5 Qc7 h3 Nd5 Rxe8+ Bf8 a3 Qd7 Qe1 Nf6 Bxf6 gxf6 Qe2 b6 Re1 Bb7 Rxa8 Bxa8 Qe8 Qb7 Be4 a5 Bxh7+ Kxh7 Qxf8 Qd7 Qxa8 c5 Qe4+ Kg7 dxc5 bxc5 Qg4+ Kf8 Qxd7",
+    "pgn": "[Event \"Rated Bullet game\"]\n[Site \"https://lichess.org/Vyx76Lee\"]\n[Date \"2020.08.04\"]\n[White \"Mrunank\"]\n[Black \"KingArts\"]\n[Result \"1-0\"]\n[UTCDate \"2020.08.04\"]\n[UTCTime \"12:54:42\"]\n[WhiteElo \"1990\"]\n[BlackElo \"2007\"]\n[WhiteRatingDiff \"+6\"]\n[BlackRatingDiff \"-6\"]\n[Variant \"Standard\"]\n[TimeControl \"60+0\"]\n[ECO \"A50\"]\n[Opening \"Indian Game: Normal Variation\"]\n[Termination \"Normal\"]\n\n1. d4 { [%clk 0:01:00] } Nf6 { [%clk 0:01:00] } 2. c4 { [%clk 0:01:00] } e6 { [%clk 0:01:00] } 3. e3 { [%clk 0:01:00] } Be7 { [%clk 0:01:00] } 4. Nf3 { [%clk 0:00:59] } d5 { [%clk 0:01:00] } 5. Bd3 { [%clk 0:00:59] } c6 { [%clk 0:00:59] } 6. O-O { [%clk 0:00:58] } O-O { [%clk 0:00:59] } 7. Nc3 { [%clk 0:00:57] } Nbd7 { [%clk 0:00:59] } 8. cxd5 { [%clk 0:00:57] } exd5 { [%clk 0:00:58] } 9. Re1 { [%clk 0:00:56] } Re8 { [%clk 0:00:54] } 10. e4 { [%clk 0:00:56] } dxe4 { [%clk 0:00:53] } 11. Nxe4 { [%clk 0:00:56] } Nxe4 { [%clk 0:00:53] } 12. Bxe4 { [%clk 0:00:56] } Nf6 { [%clk 0:00:53] } 13. Bd3 { [%clk 0:00:55] } Bd6 { [%clk 0:00:53] } 14. Bg5 { [%clk 0:00:54] } Qc7 { [%clk 0:00:52] } 15. h3 { [%clk 0:00:53] } Nd5 { [%clk 0:00:49] } 16. Rxe8+ { [%clk 0:00:51] } Bf8 { [%clk 0:00:46] } 17. a3 { [%clk 0:00:48] } Qd7 { [%clk 0:00:43] } 18. Qe1 { [%clk 0:00:45] } Nf6 { [%clk 0:00:40] } 19. Bxf6 { [%clk 0:00:41] } gxf6 { [%clk 0:00:40] } 20. Qe2 { [%clk 0:00:38] } b6 { [%clk 0:00:39] } 21. Re1 { [%clk 0:00:37] } Bb7 { [%clk 0:00:39] } 22. Rxa8 { [%clk 0:00:37] } Bxa8 { [%clk 0:00:39] } 23. Qe8 { [%clk 0:00:35] } Qb7 { [%clk 0:00:37] } 24. Be4 { [%clk 0:00:34] } a5 { [%clk 0:00:34] } 25. Bxh7+ { [%clk 0:00:31] } Kxh7 { [%clk 0:00:33] } 26. Qxf8 { [%clk 0:00:31] } Qd7 { [%clk 0:00:30] } 27. Qxa8 { [%clk 0:00:29] } c5 { [%clk 0:00:28] } 28. Qe4+ { [%clk 0:00:28] } Kg7 { [%clk 0:00:26] } 29. dxc5 { [%clk 0:00:27] } bxc5 { [%clk 0:00:26] } 30. Qg4+ { [%clk 0:00:27] } Kf8 { [%clk 0:00:25] } 31. Qxd7 { [%clk 0:00:26] } 1-0\n\n\n",
+    "clock": {
+        "initial": 60,
+        "increment": 0,
+        "totalTime": 60
+    }
+}
