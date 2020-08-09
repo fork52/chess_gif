@@ -1,28 +1,30 @@
 from typing import Iterable,List
 from PIL import Image , ImageDraw
-import os , sys
-
-vipshome = 'C:\\pyVips\\vips-dev-8.9\\bin'
-os.environ['PATH'] = vipshome + ';' + os.environ['PATH']
-
+from pprint import pprint
+import os 
 from pyvips import Image as VipsImage
-
-
-# Setting path to binaries
+from chess import Board
 
 
 class Chess_Image:
-    def __init__(self, colors:tuple , side:int = 70):
-        """Creates an single Chess frame.
-
-        :param colors: ( 'white_color' , 'black_color') 
+    def __init__(self, colors:tuple , side:int = 70,theme:str = 'merida'):
+        """
+        Creates frame for Chess Gif.
+        :param colors: ( white_color , black_color) 
         :param side: side of single square of the chess_board in **pixels**
         :returns: Object of class Chess_Image
         """
         self.white_color , self.black_color = colors
         self.side = side
+        self.theme = theme
+        self.pieces = Chess_Pieces(theme, round(side) )
+        self.create_initial_board()
 
-    def create_board(self):
+
+    def create_initial_board(self)->Image:
+        '''
+        Returns a PIL image object of the base chess board without pieces
+        '''
         self.board_size =  8 * self.side
         self.vertical_margin = round( 0.15 * self.board_size  )
         self.horizantal_margin = round(0.02 * self.board_size)
@@ -49,34 +51,56 @@ class Chess_Image:
                     color = self.black_color
                 ImageDrawer.rectangle( (x1,y1,x2,y2), fill =color, outline =color)
 
-        self.board_img.save('Images/result.png')
+        self.board_img.save('Images/result.png') # To be removed 
+        return self.board_img
+
+    def create_position(self,current_position:Board)->Image:
+        '''
+        Renders the current_postion on to the chess board
+        '''
+        board_list = list( map( lambda s:s.split(),str(current_position).split('\n')) )
+        base_img = self.board_img.copy()
+        for r in range(8):
+            for c in range(8):
+                piece = board_list[r][c]
+                if  piece!= '.':
+                    piece_img = self.pieces.piece_imgs[piece]
+                    base_img.paste( piece_img, self.get_location(r,c), mask=piece_img )
+        base_img.save('board_pieces.png') #To be removed
+        return base_img
+
+    def get_location(self,row:int,col:int):
+            x = self.horizantal_margin + col*self.side
+            y = self.vertical_margin + row*self.side
+            return x,y
+
 
 
 class Chess_Pieces:
-    """Loads the Chess_Pieces from memory in PIL objects.
-
-    :param colors: ( 'white_color' , 'black_color') 
-    :param side: side of single square of the chess_board in **pixels**
-    :returns: Object of class Chess_Image
     """
-    def __init__(self,theme:str):
-        piece_dir = os.path.join( 'data','piece',theme)
+    Loads the Chess_Pieces from memory in PIL objects.
+    """
+    def __init__(self,theme:str , size:int = 70 ):
+        piece_dir = os.path.join( 'data','piece', theme )
 
-        self.pieces ={
-            'r':'bR.svg' , 'q':'bQ.svg' , 'n':'bN.svg' , 'k' : 'bK.svg' , 'p':'bP.svg',
-            'R':'wR.svg' , 'Q':'wQ.svg' , 'N':'wN.svg' , 'K' : 'wK.svg' , 'P':'wP.svg'
+        #piece_mapper
+        self.pieces_map ={
+            'r':'bR' , 'q':'bQ' , 'n':'bN' , 'k' : 'bK' , 'p':'bP', 'b':'bB',
+            'R':'wR' , 'Q':'wQ' , 'N':'wN' , 'K' : 'wK' , 'P':'wP', 'B':'wB'
         }
 
-        # read the image
-        for piece in self.pieces:
-            piece_path = os.path.join(piece_dir,self.pieces[piece])
-            image = VipsImage.thumbnail(piece_path, 200, height=200)
-            image.write_to_file(f"Images/{self.pieces[piece][:2]}.png")
-
-
-
+        # Read the .svg images and save them as .png
+        for piece in self.pieces_map:
+            piece_path = os.path.join(piece_dir,  self.pieces_map[piece]+'.svg')
+            image = VipsImage.thumbnail(piece_path, size , height=size)
+            image.write_to_file(f"Images/{ self.pieces_map[piece]}.png")
+        
+        # Read the png images and store them in piece_imgs dictionary
+        self.piece_imgs = {}
+        for piece in  self.pieces_map:
+            self.piece_imgs[piece] = Image.open(f"Images/{ self.pieces_map[piece]}.png")
+    
 if __name__ == "__main__":
     obj = Chess_Image( ('#ffe0b3','#802b00') )
-    obj.create_board()
-    obj2 = Chess_Pieces('gioco')
-    
+    obj.create_position(Board())
+
