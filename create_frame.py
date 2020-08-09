@@ -1,5 +1,15 @@
 from typing import Iterable,List
 from PIL import Image , ImageDraw
+import os , sys
+
+vipshome = 'C:\\pyVips\\vips-dev-8.9\\bin'
+os.environ['PATH'] = vipshome + ';' + os.environ['PATH']
+
+from pyvips import Image as VipsImage
+
+
+# Setting path to binaries
+
 
 class Chess_Image:
     def __init__(self, colors:tuple , side:int = 70):
@@ -42,7 +52,31 @@ class Chess_Image:
         self.board_img.save('Images/result.png')
 
 
+class Chess_Pieces:
+    """Loads the Chess_Pieces from memory in PIL objects.
+
+    :param colors: ( 'white_color' , 'black_color') 
+    :param side: side of single square of the chess_board in **pixels**
+    :returns: Object of class Chess_Image
+    """
+    def __init__(self,theme:str):
+        piece_dir = os.path.join( 'data','piece',theme)
+
+        self.pieces ={
+            'r':'bR.svg' , 'q':'bQ.svg' , 'n':'bN.svg' , 'k' : 'bK.svg' , 'p':'bP.svg',
+            'R':'wR.svg' , 'Q':'wQ.svg' , 'N':'wN.svg' , 'K' : 'wK.svg' , 'P':'wP.svg'
+        }
+
+        # read the image
+        for piece in self.pieces:
+            piece_path = os.path.join(piece_dir,self.pieces[piece])
+            image = VipsImage.thumbnail(piece_path, 200, height=200)
+            image.write_to_file(f"Images/{self.pieces[piece][:2]}.png")
+
+
 
 if __name__ == "__main__":
     obj = Chess_Image( ('#ffe0b3','#802b00') )
     obj.create_board()
+    obj2 = Chess_Pieces('gioco')
+    
