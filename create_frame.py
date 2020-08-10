@@ -5,9 +5,8 @@ import os
 from pyvips import Image as VipsImage
 from chess import Board
 
-
 class Chess_Image:
-    def __init__(self, colors:tuple , side:int = 70,theme:str = 'merida'):
+    def __init__(self, colors:tuple , side:int = 60,theme:str = 'merida'):
         """
         Creates frame for Chess Gif.
         :param colors: ( white_color , black_color) 
@@ -73,7 +72,6 @@ class Chess_Image:
             x = self.horizantal_margin + col*self.side
             y = self.vertical_margin + row*self.side
             return x,y
-
 
 
 class Chess_Pieces:

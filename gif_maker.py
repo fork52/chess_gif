@@ -56,13 +56,13 @@ class Gifmaker:
                 # # Black's perspective
                 # print( '\n',current_board.transform( flip_vertical ))
         
-        obj = Chess_Image(('#ffe0b3','#802b00') )
+        obj = Chess_Image(('#ffe0b3','#802b00'),side=50 )
         frames =  list( map(lambda x:obj.create_position(x) , self.board_states ) )
 
         frames[0].save('chess.gif',
                save_all=True,
                append_images=frames[1:],
-               duration=1000,
+               duration=500,
                loop=0
             )
 
@@ -75,7 +75,7 @@ class Gifmaker:
 if __name__ == "__main__":
 
     # pgn_file_path = 'data/pgn/MikelOjda_vs_iDontTalkiDoIt_2020.03.19.pgn'
-    pgn_file_path = r'C:\Users\Sanjay\Desktop\pgn_to_gif\data\pgn\lichess_pgn_2020.08.03_Mrunank_vs_prem_singh_bhati.gKZs5DjG.pgn'
+    pgn_file_path = r'data\pgn\lichess_pgn_2020.08.03_Mrunank_vs_prem_singh_bhati.gKZs5DjG.pgn'
     # pgn_file_path = r'data\pgn\lichess_pgn_2020.08.01_Mrunank_vs_Blindtakes34.E2og9BtO.pgn'
 
     obj = Gifmaker()
