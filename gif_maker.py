@@ -4,6 +4,7 @@ from chess import flip_vertical,Board
 from typing import Iterable
 from pprint import pprint
 from pygifsicle import optimize as optimize_gif
+from imageio import mimwrite
 import os
 import errno
 
@@ -107,14 +108,20 @@ class Gifmaker:
 
         frames =  list( map(lambda x:obj.create_position(x) , self.board_states ) )
 
-        frames[0].save ( 
-               gif_file_path,
-               save_all=True,
-               append_images=frames[1:],
-               duration=800,
-               loop=0
-            )
+        # frames[0].save ( 
+        #        gif_file_path,
+        #        save_all=True,
+        #        append_images=frames[1:],
+        #        duration=800,
+        #        loop=0
+        #     )
 
+        mimwrite( 
+            gif_file_path,
+            frames, duration = 1,
+            subrectangles = True ,
+            palettesize = 256 # default = 256
+        )
         optimize_gif(gif_file_path)
 
         print(self.white_timeline)
@@ -124,11 +131,14 @@ class Gifmaker:
 if __name__ == "__main__":
 
     # pgn_file_path = 'data/pgn/MikelOjda_vs_iDontTalkiDoIt_2020.03.19.pgn'
-    pgn_file_path = 'data\\pgn\\lichess_pgn_2020.08.03_Mrunank_vs_prem_singh_bhati.gKZs5DjG.pgn'
-    # pgn_file_path = r'data\pgn\lichess_pgn_2020.08.01_Mrunank_vs_Blindtakes34.E2og9BtO.pgn'
+    # pgn_file_path = 'data\\pgn\\lichess_pgn_2020.08.03_Mrunank_vs_prem_singh_bhati.gKZs5DjG.pgn'
+    pgn_file_path = r'data\pgn\lichess_pgn_2020.08.01_Mrunank_vs_Blindtakes34.E2og9BtO.pgn'
 
-    yellow_green = (  '#fff5cc','#006600')
+    yellow_green = (  '#ffffdd','#86a666')
+    brown_off_white = ('#f0d9b5', '#b58863')
+    blue_white = ('#dee3e6','#8ca2ad')
+    
 
-    obj = Gifmaker(pgn_file_path, colors=yellow_green, piece_theme = 'alpha' )
+    obj = Gifmaker(pgn_file_path, colors=blue_white, piece_theme = 'merida' )
     obj.make_gif('hello.gif')
 

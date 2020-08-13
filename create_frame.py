@@ -80,7 +80,7 @@ class Chess_Image:
                 if  piece!= '.':
                     piece_img = self.pieces.piece_imgs[piece]
                     base_img.paste( piece_img, self.get_location(r,c), mask=piece_img )
-        base_img.save('Images/board_pieces.png') #To be removed
+        # base_img.save('Images/board_pieces.png') #To be removed
         return base_img
 
     def get_location(self,row:int,col:int)->tuple:
