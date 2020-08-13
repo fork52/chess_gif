@@ -128,5 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Removed .vscode
+# Remove .vscode
 .vscode
+
+#remove coderunnerFile.py
+tempCodeRunnerFile.py

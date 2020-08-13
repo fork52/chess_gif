@@ -6,17 +6,31 @@ from pyvips import Image as VipsImage
 from chess import Board
 
 class Chess_Image:
-    def __init__(self, colors:tuple , side:int = 60,theme:str = 'merida'):
+
+    def __init__(self, colors:tuple , side:int = 60,piece_theme:str = 'merida'):
         """
         Creates frame for Chess Gif.
-        :param colors: ( white_color , black_color) 
-        :param side: side of single square of the chess_board in **pixels**
+        :param colors: Specify white and black square color: ( white_color , black_color)
+        :param side: Side of single square of the chess_board in **pixels**
+        :param piece_theme: Choose one of the available piece_themes. Default:'merida'
         :returns: Object of class Chess_Image
+        :rtype: Chess_Image
         """
+
         self.white_color , self.black_color = colors
+        assert isinstance(side,int),'side should be an int.'
+        assert side > 10  , 'side should be greater than 10 pixels.'
+        #: side of one square on the chessboard in pixels
         self.side = side
-        self.theme = theme
-        self.pieces = Chess_Pieces(theme, round(side) )
+
+        assert isinstance( piece_theme ,str ),'piece_theme should be a string.'
+        valid_piece_themes =  os.listdir('data/piece/')   # Get all the available piece_themes
+        piece_theme_stmt = f'{piece_theme} is not a valid piece_theme. Choose one of the following piece themes:\n{valid_piece_themes} .'
+        assert piece_theme in valid_piece_themes, piece_theme_stmt
+        #: piece_theme is one of the available piece theme
+        self.piece_theme = piece_theme
+
+        self.pieces = Chess_Pieces(piece_theme, round(side) )
         self.create_initial_board()
 
 
@@ -24,6 +38,7 @@ class Chess_Image:
         '''
         Returns a PIL image object of the base chess board without pieces
         '''
+        #: Size of the 8x8 square chess-board
         self.board_size =  8 * self.side
         self.vertical_margin = round( 0.15 * self.board_size  )
         self.horizantal_margin = round(0.02 * self.board_size)
@@ -55,7 +70,7 @@ class Chess_Image:
 
     def create_position(self,current_position:Board)->Image:
         '''
-        Renders the current_postion on to the chess board
+        Renders passed current_postion on to the chess board.
         '''
         board_list = list( map( lambda s:s.split(),str(current_position).split('\n')) )
         base_img = self.board_img.copy()
@@ -65,10 +80,10 @@ class Chess_Image:
                 if  piece!= '.':
                     piece_img = self.pieces.piece_imgs[piece]
                     base_img.paste( piece_img, self.get_location(r,c), mask=piece_img )
-        base_img.save('board_pieces.png') #To be removed
+        base_img.save('Images/board_pieces.png') #To be removed
         return base_img
 
-    def get_location(self,row:int,col:int):
+    def get_location(self,row:int,col:int)->tuple:
             x = self.horizantal_margin + col*self.side
             y = self.vertical_margin + row*self.side
             return x,y
@@ -78,27 +93,27 @@ class Chess_Pieces:
     """
     Loads the Chess_Pieces from memory in PIL objects.
     """
-    def __init__(self,theme:str , size:int = 70 ):
-        piece_dir = os.path.join( 'data','piece', theme )
+    def __init__(self,piece_theme:str , size:int = 70 ):
+        piece_dir = os.path.join( 'data','piece', piece_theme )
 
-        #piece_mapper
+        #: Maps pieces to their corresponding .svg filenames
         self.pieces_map ={
             'r':'bR' , 'q':'bQ' , 'n':'bN' , 'k' : 'bK' , 'p':'bP', 'b':'bB',
             'R':'wR' , 'Q':'wQ' , 'N':'wN' , 'K' : 'wK' , 'P':'wP', 'B':'wB'
         }
 
-        # Read the .svg images and save them as .png
+        # Reads the available piece theme's .svg images and save them as .png of appropraite size
         for piece in self.pieces_map:
             piece_path = os.path.join(piece_dir,  self.pieces_map[piece]+'.svg')
             image = VipsImage.thumbnail(piece_path, size , height=size)
             image.write_to_file(f"Images/{ self.pieces_map[piece]}.png")
         
-        # Read the png images and store them in piece_imgs dictionary
-        self.piece_imgs = {}
+        #: Dictionary where pieces are the keys and corresponding PIL Images are the values
+        self.piece_imgs = dict()
         for piece in  self.pieces_map:
             self.piece_imgs[piece] = Image.open(f"Images/{ self.pieces_map[piece]}.png")
     
 if __name__ == "__main__":
-    obj = Chess_Image( ('#ffe0b3','#802b00') )
+    obj = Chess_Image( ('#ffe0b3','#802b00') , side ='2', piece_theme='dog' )
     obj.create_position(Board())
 
