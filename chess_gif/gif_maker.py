@@ -18,13 +18,13 @@ class Gifmaker:
                 pgn_file_path:str, 
                 **kwargs:dict ):
         '''
-        Constructor of Gifmaker class for setting up options.
+         Constructor of Gifmaker class for setting up options.
         :param pgn_file_path: Path to the pgn file.
         :type pgn_file_path: str
         :key name: person's first name, should be a str
         :key age: person's age in years, rounded down, should be an int
-        :Example:
 
+        :Example:
         >>> import Gifmaker
         >>> obj = Gifmaker('game.pgn')
         >>> obj.make_gif('chess.gif)
@@ -49,7 +49,7 @@ class Gifmaker:
         self.pgn_file_path = pgn_file_path
 
 
-    def make_gif(self, gif_file_path:str = 'chess.gif' )->None:
+    def make_gif(self, gif_file_path:str = 'chess.gif' ):
         '''
         Makes a gif at the specified destination file path.
 
