@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/fork52/PGN-to-GIF",
     packages=setuptools.find_packages(),
     install_requires=[
-          'python-chess', 'pyvips' ,'imageio', 'pygifsicle'
+          'python-chess', 'pyvips' ,'imageio', 'pygifsicle', 'Pillow'
       ],
     classifiers=[
         "Programming Language :: Python :: 3",

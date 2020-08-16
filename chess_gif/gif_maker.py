@@ -114,13 +114,6 @@ class Gifmaker:
 
         frames =  list( map(lambda x:obj.create_position(x) , self.board_states ) )
 
-        # frames[0].save ( 
-        #        gif_file_path,
-        #        save_all=True,
-        #        append_images=frames[1:],
-        #        duration=800,
-        #        loop=0
-        #     )
 
         mimwrite( 
             gif_file_path,
