@@ -1,2 +1,2 @@
-# pgn_to_gif
+# ChessGif
 **Python library for creating GIFs from chess PGNs.**

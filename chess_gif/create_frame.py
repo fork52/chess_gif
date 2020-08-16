@@ -4,7 +4,6 @@ from pprint import pprint
 import os 
 from pyvips import Image as VipsImage
 from chess import Board
-import pkg_resources
 
 
 class Chess_Image:

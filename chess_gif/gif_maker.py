@@ -114,13 +114,13 @@ class Gifmaker:
 
         frames =  list( map(lambda x:obj.create_position(x) , self.board_states ) )
 
-
         mimwrite( 
             gif_file_path,
             frames, duration = 1,
             subrectangles = True ,
             palettesize = 256 # default = 256
         )
+        
         optimize_gif(gif_file_path)
 
         print(self.white_timeline)
