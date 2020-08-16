@@ -1,0 +1,4 @@
+include README.md
+recursive-include docs/build *
+recursive-include chess_gif/Images *
+recursive-include chess_gif/data *

@@ -1,4 +1,4 @@
-from create_frame import Chess_Image
+from chess_gif.create_frame import Chess_Image
 from chess import pgn as pgn_reader
 from chess import flip_vertical,Board
 from typing import Iterable
@@ -13,7 +13,9 @@ class Gifmaker:
     Class for converting a chess PGN file to a GIF 
     '''
 
-    def __init__(self, pgn_file_path:str, **kwargs:dict ):
+    def __init__(self, 
+                pgn_file_path:str, 
+                **kwargs:dict ):
         '''
         Constructor of Gifmaker class for setting up options.
         :param pgn_file_path: Path to the pgn file.

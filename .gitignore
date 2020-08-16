@@ -133,3 +133,6 @@ dmypy.json
 
 #remove coderunnerFile.py
 tempCodeRunnerFile.py
+
+# Remove automate file
+automate.bat
