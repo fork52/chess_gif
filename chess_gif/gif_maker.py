@@ -7,6 +7,7 @@ from pygifsicle import optimize as optimize_gif
 from imageio import mimwrite
 import os
 import errno
+from pkg_resources import resource_string
 
 class Gifmaker:
     '''
@@ -20,12 +21,15 @@ class Gifmaker:
         Constructor of Gifmaker class for setting up options.
         :param pgn_file_path: Path to the pgn file.
         :type pgn_file_path: str
-
+        :key name: person's first name, should be a str
+        :key age: person's age in years, rounded down, should be an int
         :Example:
 
         >>> import Gifmaker
         >>> obj = Gifmaker('game.pgn')
         >>> obj.make_gif('chess.gif)
+
+
         '''
 
         # Set all the kwargs to default values if not provided

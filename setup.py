@@ -23,10 +23,7 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     include_package_data=True,
-    # entry_points ={ 
-    #     'console_scripts': [ 
-    #         'sthir = sthir.CLI:create_arg_parser'
-    #     ] 
-    # }, 
-    zip_safe=False
+    zip_safe=False,
+    keywords = ['Chess GIF','PGN']
+
 )
