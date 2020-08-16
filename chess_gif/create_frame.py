@@ -41,7 +41,7 @@ class Chess_Image:
         os.chdir(cwd)
 
 
-    def create_initial_board(self)->Image:
+    def create_initial_board(self):
         '''
         Returns a PIL image object of the base chess board without pieces
         '''
@@ -78,7 +78,7 @@ class Chess_Image:
 
 
 
-    def create_position(self,current_position:Board)->Image:
+    def create_position(self,current_position:Board):
         '''
         Renders passed current_postion on to the chess board.
         '''
