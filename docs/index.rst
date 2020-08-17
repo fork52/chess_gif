@@ -3,8 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to chess-gif's documentation!
+Welcome to chess_gif's documentation!
 =====================================
+
+**chess_gif** is a python library for easily making GIFs of chess games in PGN (Portable Game Notation) 
+format which is the standard format for storing chess games.
+
+
 
 .. toctree::
    :maxdepth: 3

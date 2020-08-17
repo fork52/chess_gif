@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="chess-gif", 
+    name="chess_gif", 
     version="0.0.1",
     author="Mrunank Mistry,Dhruvam Kothari",
     author_email="mrunankmistry52@gmail.com",

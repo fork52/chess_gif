@@ -1,6 +1,5 @@
 from typing import Iterable,List
 from PIL import Image , ImageDraw
-import PIL
 from pprint import pprint
 import os 
 from pyvips import Image as VipsImage
@@ -9,19 +8,28 @@ from chess import Board
 
 class Chess_Image:
     """
-    Creates Single frames for necessary for rendering the GIFs.
+    Creates Single Image frames for as for rendering the GIFs
+    as per requirements.
 
-    :param colors: Specify white and black square color in the format ``(white_color ,black_color)``.
-    :param side: Side of single square of the chess_board in **pixels**. Defaults to ``70``.
-    :param piece_theme: Choose one of the available piece_themes. Defaults to ``merida``.
-    :returns: Object of class Chess_Image
-    :rtype: `Chess_Image``
+    Parameters
+    ----------
+    colors : tuple
+        Specify white and black square color in the format 
+        ``(white_color ,black_color)``.
+
+    side : int, optional
+        Side of **single square** of the chess_board in **pixels**. 
+        Defaults to ``70``.
+
+    piece_theme: str, optional.
+        Choose one of the available piece-themes mentioned in the notes below. 
+        Defaults to ``merida``.                    
 
     """
 
     def __init__(self, colors:tuple , side:int = 70,piece_theme:str = 'merida'):
 
-        
+        # Changing the directory to read data
         cwd = os.getcwd()
         script_dir = os.path.dirname(os.path.abspath(__file__))
         os.chdir(script_dir)
