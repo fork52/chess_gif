@@ -11,26 +11,31 @@ from pkg_resources import resource_string
 
 class Gifmaker:
     '''
-    Class for converting a chess PGN file to a GIF 
+    Class for converting a chess ``PGN`` file to a GIF.
+
+    :param pgn_file_path: Path to the pgn file.
+    :type pgn_file_path: str
+    :type pgn_file_path: str
+    :key colors: colors for white and black squares. Defaults to ``( '#9e3725','#ffe0b3' )``.
+    :type colors: PIL colors
+    :key side:  Size of the side of a single chess-square in pixels. Defaults to ``70``.
+    :type side: int
+
+
+    :Example:
+
+    >>> import Gifmaker
+    >>> obj = Gifmaker('game.pgn')
+    >>> obj.make_gif('chess.gif)
+
+    The gif will be created in the current directory.
     '''
 
     def __init__(self, 
                 pgn_file_path:str, 
                 **kwargs:dict ):
-        '''
-         Constructor of Gifmaker class for setting up options.
-        :param pgn_file_path: Path to the pgn file.
-        :type pgn_file_path: str
-        :key name: person's first name, should be a str
-        :key age: person's age in years, rounded down, should be an int
-
-        :Example:
-        >>> import Gifmaker
-        >>> obj = Gifmaker('game.pgn')
-        >>> obj.make_gif('chess.gif)
-
-
-        '''
+        """Constructor method
+        """
 
         # Set all the kwargs to default values if not provided
         kwargs.setdefault('colors', ( '#9e3725','#ffe0b3' ) )
@@ -39,13 +44,11 @@ class Gifmaker:
 
         pprint(kwargs)
         
-        #: Contains the kwargs for the object
         self.kwargs = kwargs
 
         if not os.path.isfile(pgn_file_path):
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path) 
 
-        #: Path to the pgn file 
         self.pgn_file_path = pgn_file_path
 
 

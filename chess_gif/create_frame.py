@@ -1,5 +1,6 @@
 from typing import Iterable,List
 from PIL import Image , ImageDraw
+import PIL
 from pprint import pprint
 import os 
 from pyvips import Image as VipsImage
@@ -7,16 +8,19 @@ from chess import Board
 
 
 class Chess_Image:
+    """
+    Creates Single frames for necessary for rendering the GIFs.
 
-    def __init__(self, colors:tuple , side:int = 60,piece_theme:str = 'merida'):
-        """
-        Creates frame for Chess Gif.
-        :param colors: Specify white and black square color: ( white_color , black_color)
-        :param side: Side of single square of the chess_board in **pixels**
-        :param piece_theme: Choose one of the available piece_themes. Default:'merida'
-        :returns: Object of class Chess_Image
-        :rtype: Chess_Image
-        """
+    :param colors: Specify white and black square color in the format ``(white_color ,black_color)``.
+    :param side: Side of single square of the chess_board in **pixels**. Defaults to ``70``.
+    :param piece_theme: Choose one of the available piece_themes. Defaults to ``merida``.
+    :returns: Object of class Chess_Image
+    :rtype: `Chess_Image``
+
+    """
+
+    def __init__(self, colors:tuple , side:int = 70,piece_theme:str = 'merida'):
+
         
         cwd = os.getcwd()
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -43,7 +47,7 @@ class Chess_Image:
 
     def create_initial_board(self):
         '''
-        Returns a PIL image object of the base chess board without pieces
+        Returns a PIL image object of the base chess board without pieces.
         '''
 
         #: Size of the 8x8 square chess-board
