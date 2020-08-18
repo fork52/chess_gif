@@ -35,7 +35,7 @@ class Gifmaker:
     >>> obj = Gifmaker('game.pgn')
     >>> obj.make_gif('chess_game.gif)
 
-    | 'chess_game.gif' will be created in the current working directory directory.
+    | ``chess_game.gif`` will be created in the current working directory.
 
     .. image:: ../docs/chess_game.gif
 
