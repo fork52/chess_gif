@@ -6,9 +6,11 @@
 Welcome to chess_gif's documentation!
 =====================================
 
-**chess_gif** is a python library for easily making GIFs of chess games in PGN (Portable Game Notation) 
-format which is the standard format for storing chess games.
+**chess_gif** is a python library for easily making GIFs of chess games in ``PGN`` (Portable Game Notation) 
+format which is the standard plain text format for recording chess games.
 
+**chess_gif** provides allows users to create highly customizable and optimized GIFs from the
+``PGN`` files of your chess games.
 
 
 .. toctree::

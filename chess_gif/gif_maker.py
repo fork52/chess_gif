@@ -33,22 +33,23 @@ class Gifmaker:
     --------
     >>> import Gifmaker
     >>> obj = Gifmaker('game.pgn')
-    >>> obj.make_gif('chess.gif)
+    >>> obj.make_gif('chess_game.gif)
 
+    | 'chess_game.gif' will be created in the current working directory directory.
 
-    The GIF name 'chess.gif' will be created in the current working directory directory.
+    .. image:: ../docs/chess_game.gif
+
+    |
+    | The resolution of the images is adjustable by changing the side keyword argument.
 
 
     Note
     ----
         Following are the available piece-themes:
 
-        **{ 'alpha', 'california' , 'cardinal' , 'cburnett' , 'chess7', 'chessnut' , 'companion' , 
-        'dubrovny','fantasy' , 'fresca' , 'gioco' , 'icpieces' , 'kosal' , 'leipzig' , 'letter' , 
-        'libra' , 'maestro', 'merida' , 'mono' , 'pirouetti' , 'pixel' , 'reillycraig' , 'riohacha' , 
-        'shapes' , 'spatial','staunty' , 'tatiana' }**.
+        **{ 'alpha', 'california' , 'cardinal' , 'cburnett' , 'chess7' , 'chessnut' , 'companion' , 'dubrovny' , 'fantasy' , 'fresca' , 'gioco' , 'icpieces' , 'kosal' , 'leipzig' , 'letter' , 'libra' , 'maestro' , 'merida' , 'mono' , 'pirouetti' , 'pixel' , 'reillycraig' , 'riohacha' , 'shapes' , 'spatial' , 'staunty' , 'tatiana' }**.
         
-        The piece themes are the publicly available themes taken from **lichess.org's** amazing 
+        These are the publicly available themes taken from **lichess.org's** amazing 
         `repository-lila <https://github.com/ornicar/lila>`_ .
 
     '''
