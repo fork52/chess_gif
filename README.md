@@ -25,7 +25,7 @@ pip install chess_gif
 
    On Windows you will need to download and install the [appropriate port of the library](gifsicle-port) for your OS. Add the path to `gifsicle.exe` file to your `PATH` variable.
 
-## Usage
+## Usage Example
 
 This is a sample PGN file. 
 
@@ -49,14 +49,14 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2
 ```
 
 ```python3 
-    >>> import Gifmaker
-    >>> obj = Gifmaker('sample.pgn')
+    >>> from chess_gif.gif_maker import Gifmaker
+    >>> obj = Gifmaker(pgn_file_path, h_margin = 20 , v_margin = 80 )
     >>> obj.make_gif('chess_game.gif)
 ```
 
 <p align="center">
 <img src="https://github.com/fork52/chess_gif/blob/master/docs/chess_game.gif" 
-width="50%" height="50%">
+width="55%" height="55%">
 </p>
 
 

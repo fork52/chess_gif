@@ -37,7 +37,7 @@ class Gifmaker:
 
     Example
     --------
-    >>> import Gifmaker
+    >>> from chess_gif.gif_maker import Gifmaker
     >>> obj = Gifmaker('game.pgn')
     >>> obj.make_gif('chess_game.gif)
 
@@ -70,7 +70,7 @@ class Gifmaker:
         """
 
         # Set all the kwargs to default values if not provided
-        kwargs.setdefault('colors', ( '#9e3725','#ffe0b3' ) )
+        kwargs.setdefault('colors', ('#dee3e6','#8ca2ad') )
         kwargs.setdefault('piece_theme','merida')
         kwargs.setdefault('side',70)
         kwargs.setdefault('h_margin',0)
@@ -105,16 +105,16 @@ class Gifmaker:
         # Stores the headers in the pgn
         self.header_info = chess_game.headers
 
-        self.white_player = self.header_info['White']
-        self.black_player = self.header_info['Black']
-        self.BlackElo = self.header_info['BlackElo']
-        self.WhiteElo = self.header_info['WhiteElo']
+        # self.white_player = self.header_info['White']
+        # self.black_player = self.header_info['Black']
+        # self.BlackElo = self.header_info['BlackElo']
+        # self.WhiteElo = self.header_info['WhiteElo']
 
-        print('White Player:',self.white_player)
-        print('Black Player:',self.black_player,'\n')
+        # print('White Player:',self.white_player)
+        # print('Black Player:',self.black_player,'\n')
 
-        print( 'WhiteElo:', self.WhiteElo )
-        print( 'BlackElo:', self.BlackElo )
+        # print( 'WhiteElo:', self.WhiteElo )
+        # print( 'BlackElo:', self.BlackElo )
 
         # get string notation of the game
         # print(str( chess_game.game()).replace('\n','') )
