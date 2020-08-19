@@ -173,6 +173,10 @@
 <li><p><strong>piece_theme</strong> (<cite>str</cite>, optional) – Choose one of the available piece_themes.
 Default <code class="docutils literal notranslate"><span class="pre">merida</span></code>.</p></li>
 <li><p><strong>side</strong> (<cite>int</cite>, optional) – Size of the side of a single chess-square in pixels. Default <code class="docutils literal notranslate"><span class="pre">70</span></code>.</p></li>
+<li><p><strong>h_margin</strong> (<cite>int</cite>, optional) – Black horizontal margin around the chess_board to be rendered in the GIF.
+Default <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>v_margin</strong> (<cite>int</cite>, optional) – Black vertical margin around the chess_board to be rendered in the GIF.
+Default <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -183,7 +187,7 @@ Default <code class="docutils literal notranslate"><span class="pre">merida</spa
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">chess_game.gif</span></code> will be created in the current working directory directory.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">chess_game.gif</span></code> will be created in the current working directory.</div>
 </div>
 <img alt="_images/chess_game.gif" src="_images/chess_game.gif" />
 <div class="line-block">
@@ -194,8 +198,7 @@ Default <code class="docutils literal notranslate"><span class="pre">merida</spa
 <p class="admonition-title">Note</p>
 <p>Following are the available piece-themes:</p>
 <p><strong>{ ‘alpha’, ‘california’ , ‘cardinal’ , ‘cburnett’ , ‘chess7’ , ‘chessnut’ , ‘companion’ , ‘dubrovny’ , ‘fantasy’ , ‘fresca’ , ‘gioco’ , ‘icpieces’ , ‘kosal’ , ‘leipzig’ , ‘letter’ , ‘libra’ , ‘maestro’ , ‘merida’ , ‘mono’ , ‘pirouetti’ , ‘pixel’ , ‘reillycraig’ , ‘riohacha’ , ‘shapes’ , ‘spatial’ , ‘staunty’ , ‘tatiana’ }</strong>.</p>
-<p>These are the publicly available themes taken from <strong>lichess.org’s</strong> amazing
-<a class="reference external" href="https://github.com/ornicar/lila">repository-lila</a> .</p>
+<p>These are the publicly available themes taken from <strong>lichess.org’s</strong> amazing <a class="reference external" href="https://github.com/ornicar/lila">repository-lila</a> .</p>
 </div>
 <dl class="py attribute">
 <dt id="gif_maker.Gifmaker.blue_white">

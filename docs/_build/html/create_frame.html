@@ -161,7 +161,7 @@
 <span id="create-frame-module"></span><h1>create_frame module<a class="headerlink" href="#module-create_frame" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="create_frame.Chess_Image">
-<em class="property">class </em><code class="sig-prename descclassname">create_frame.</code><code class="sig-name descname">Chess_Image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colors</span><span class="p">:</span> <span class="n">tuple</span></em>, <em class="sig-param"><span class="n">side</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">70</span></em>, <em class="sig-param"><span class="n">piece_theme</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'merida'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#create_frame.Chess_Image" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">create_frame.</code><code class="sig-name descname">Chess_Image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">colors</span><span class="p">:</span> <span class="n">tuple</span></em>, <em class="sig-param"><span class="n">side</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">70</span></em>, <em class="sig-param"><span class="n">piece_theme</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'merida'</span></em>, <em class="sig-param"><span class="n">h_margin</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">v_margin</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#create_frame.Chess_Image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Creates Single Image frames for as for rendering the GIFs
 as per requirements.</p>
@@ -174,6 +174,10 @@ as per requirements.</p>
 Defaults to <code class="docutils literal notranslate"><span class="pre">70</span></code>.</p></li>
 <li><p><strong>piece_theme</strong> (<em>str</em><em>, </em><em>optional.</em>) – Choose one of the available piece-themes mentioned in the notes below.
 Defaults to <code class="docutils literal notranslate"><span class="pre">merida</span></code>.</p></li>
+<li><p><strong>h_margin</strong> (<cite>int</cite>, optional) – Black horizontal margin around the chess_board to be rendered in the GIF.
+Default <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>v_margin</strong> (<cite>int</cite>, optional) – Black vertical margin around the chess_board to be rendered in the GIF.
+Default <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -193,12 +197,6 @@ Defaults to <code class="docutils literal notranslate"><span class="pre">merida<
 <dt id="create_frame.Chess_Image.get_location">
 <code class="sig-name descname">get_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">row</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">col</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#create_frame.Chess_Image.get_location" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="create_frame.Chess_Image.piece_theme">
-<code class="sig-name descname">piece_theme</code><a class="headerlink" href="#create_frame.Chess_Image.piece_theme" title="Permalink to this definition">¶</a></dt>
-<dd><p>piece_theme is one of the available piece theme</p>
-</dd></dl>
 
 <dl class="py attribute">
 <dt id="create_frame.Chess_Image.side">

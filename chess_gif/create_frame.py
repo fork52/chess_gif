@@ -23,11 +23,25 @@ class Chess_Image:
 
     piece_theme: str, optional.
         Choose one of the available piece-themes mentioned in the notes below. 
-        Defaults to ``merida``.                    
+        Defaults to ``merida``.       
+
+    h_margin : `int`, optional
+        Black horizontal margin around the chess_board to be rendered in the GIF. 
+        Default ``0``.
+
+    v_margin : `int`, optional
+        Black vertical margin around the chess_board to be rendered in the GIF. 
+        Default ``0``.
 
     """
 
-    def __init__(self, colors:tuple , side:int = 70,piece_theme:str = 'merida'):
+    def __init__(
+            self, colors:tuple,
+            side:int = 70,
+            piece_theme:str = 'merida',
+            h_margin:int = 0,
+            v_margin:int = 0
+     ):
 
         # Changing the directory to read data
         cwd = os.getcwd()
@@ -35,19 +49,27 @@ class Chess_Image:
         os.chdir(script_dir)
         
         self.white_color , self.black_color = colors
+
+        # Validating side of the square
         assert isinstance(side,int),'side should be an int.'
         assert side > 10  , 'side should be greater than 10 pixels.'
         #: side of one square on the chessboard in pixels
         self.side = side
 
+        # Validating piece theme
         assert isinstance( piece_theme ,str ),'piece_theme should be a string.'
         valid_piece_themes =  os.listdir('data/piece/')   # Get all the available piece_themes
         piece_theme_stmt = f'{piece_theme} is not a valid piece_theme. Choose one of the following piece themes:\n{valid_piece_themes} .'
         assert piece_theme in valid_piece_themes, piece_theme_stmt
-        #: piece_theme is one of the available piece theme
         self.piece_theme = piece_theme
-
+        # Load the pieces 
         self.pieces = Chess_Pieces(piece_theme, round(side) )
+
+        #Set horizontal and vertical margin
+        self.horizantal_margin = h_margin
+        self.vertical_margin = v_margin
+
+
         self.create_initial_board()
 
         os.chdir(cwd)
@@ -60,8 +82,8 @@ class Chess_Image:
 
         #: Size of the 8x8 square chess-board
         self.board_size =  8 * self.side
-        self.vertical_margin = round( 0.15 * self.board_size  )
-        self.horizantal_margin = round(0.02 * self.board_size)
+        # self.vertical_margin = round( 0.15 * self.board_size  )
+        # self.horizantal_margin = round(0.02 * self.board_size)
 
         # (Width , Height)
         self.img_size = ( 

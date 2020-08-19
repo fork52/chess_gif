@@ -5,6 +5,61 @@
 ## Description
 **chess_gif** provides allows users to create highly customizable and optimized GIFs from the PGN files of their chess games. 
 
+## Installation
+
+You can install chess_gif from [PyPI](pypi-link).
+
+```
+pip install chess_gif
+```
+
+**chess_gif** requires [pyvips](pyvips) and [pygifsicle](pygifsicle) as its dependencies:
+
+1. Windows users need to download the pyvip's binaries and add `vips-dev-x.y\bin` to their `PATH` variable for its installation. You can download the binaries by [clicking here](pyvips-bin]). Linux and macOS users need not worry about this and can simply skip this step. For further details, refer [pyvip's installation guide](pyvips-install).
+
+2. While running the installation, on MacOS the setup will automatically install gifsicle using [Brew](https://brew.sh/).  
+
+   On Linux you will need to install gifsicle using apt-get as follows:
+
+       sudo apt-get install gifsicle 
+
+   On Windows you will need to download and install the [appropriate port of the library](gifsicle-port) for your OS. Add the path to `gifsicle.exe` file to your `PATH` variable.
+
+## Usage
+
+This is a sample PGN file. 
+
+```
+[Event "F/S Return Match"]
+[Site "Belgrade, Serbia JUG"]
+[Date "1992.11.04"]
+[Round "29"]
+[White "Fischer, Robert J."]
+[Black "Spassky, Boris V."]
+[Result "1/2-1/2"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 {This opening is called the Ruy Lopez.}
+4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 d6 8. c3 O-O 9. h3 Nb8 10. d4 Nbd7
+11. c4 c6 12. cxb5 axb5 13. Nc3 Bb7 14. Bg5 b4 15. Nb1 h6 16. Bh4 c5 17. dxe5
+Nxe4 18. Bxe7 Qxe7 19. exd6 Qf6 20. Nbd2 Nxd6 21. Nc4 Nxc4 22. Bxc4 Nb6
+23. Ne5 Rae8 24. Bxf7+ Rxf7 25. Nxf7 Rxe1+ 26. Qxe1 Kxf7 27. Qe3 Qg5 28. Qxg5
+hxg5 29. b3 Ke6 30. a3 Kd6 31. axb4 cxb4 32. Ra5 Nd5 33. f3 Bc8 34. Kf2 Bf5
+35. Ra7 g6 36. Ra6+ Kc5 37. Ke1 Nf4 38. g3 Nxh3 39. Kd2 Kb5 40. Rd6 Kc5 41. Ra6
+Nf2 42. g4 Bd3 43. Re6 1/2-1/2
+```
+
+```python3 
+    >>> import Gifmaker
+    >>> obj = Gifmaker('sample.pgn')
+    >>> obj.make_gif('chess_game.gif)
+```
+
+<p align="center">
+<img src="https://github.com/fork52/chess_gif/blob/master/docs/chess_game.gif" 
+width="80%" height="80%">
+</p>
+
+
 ## Dependencies
 
 1. [python-chess](python-chess) : python-chess is a pure Python chess library with move generation, move validation and support for common formats. chess_gif uses python-chess for parsing pgn files and also for creating a board represenation of the chess games.
@@ -45,4 +100,7 @@ The repository is licensed under [MIT License](license-url).
 [imageio]:https://github.com/imageio/imageio
 [pyvips-install]:https://libvips.github.io/pyvips/README.html#non-conda-install
 [pyvips]:https://github.com/libvips/pyvips
+[pyvips-bin]:https://libvips.github.io/libvips/install.html
 [pygifsicle]:https://github.com/LucaCappelletti94/pygifsicle
+[gifsicle-port]:https://eternallybored.org/misc/gifsicle/
+[pypi-link]:https://google.com

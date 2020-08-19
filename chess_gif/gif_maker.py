@@ -27,6 +27,12 @@ class Gifmaker:
         Default ``merida``.
     side : `int`, optional
         Size of the side of a single chess-square in pixels. Default ``70``.
+    h_margin : `int`, optional
+        Black horizontal margin around the chess_board to be rendered in the GIF. 
+        Default ``0``.
+    v_margin : `int`, optional
+        Black vertical margin around the chess_board to be rendered in the GIF. 
+        Default ``0``.
 
 
     Example
@@ -49,8 +55,7 @@ class Gifmaker:
 
         **{ 'alpha', 'california' , 'cardinal' , 'cburnett' , 'chess7' , 'chessnut' , 'companion' , 'dubrovny' , 'fantasy' , 'fresca' , 'gioco' , 'icpieces' , 'kosal' , 'leipzig' , 'letter' , 'libra' , 'maestro' , 'merida' , 'mono' , 'pirouetti' , 'pixel' , 'reillycraig' , 'riohacha' , 'shapes' , 'spatial' , 'staunty' , 'tatiana' }**.
         
-        These are the publicly available themes taken from **lichess.org's** amazing 
-        `repository-lila <https://github.com/ornicar/lila>`_ .
+        These are the publicly available themes taken from **lichess.org's** amazing `repository-lila <https://github.com/ornicar/lila>`_ .
 
     '''
 
@@ -68,11 +73,14 @@ class Gifmaker:
         kwargs.setdefault('colors', ( '#9e3725','#ffe0b3' ) )
         kwargs.setdefault('piece_theme','merida')
         kwargs.setdefault('side',70)
+        kwargs.setdefault('h_margin',0)
+        kwargs.setdefault('v_margin',0)
 
         pprint(kwargs)
         
         self.kwargs = kwargs
 
+        # Check if file exists
         if not os.path.isfile(pgn_file_path):
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path) 
 
@@ -141,7 +149,9 @@ class Gifmaker:
         obj = Chess_Image(
                         colors = self.kwargs['colors'],
                         side = self.kwargs['side'], 
-                        piece_theme = self.kwargs['piece_theme']
+                        piece_theme = self.kwargs['piece_theme'],
+                        h_margin=self.kwargs['h_margin'],
+                        v_margin=self.kwargs['v_margin']
             )
         
 
@@ -156,8 +166,8 @@ class Gifmaker:
         
         optimize_gif(gif_file_path)
 
-        print(self.white_timeline)
-        print(self.black_timeline)
+        # print(self.white_timeline)
+        # print(self.black_timeline)
 
 
 if __name__ == "__main__":
