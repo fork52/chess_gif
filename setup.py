@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="chess_gif", 
-    version="0.0.1",
+    version="0.0.2",
     author="Mrunank Mistry,Dhruvam Kothari",
     author_email="mrunankmistry52@gmail.com",
     description="A package for creating GIFs of chess game from PGN files.",

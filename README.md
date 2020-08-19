@@ -27,7 +27,7 @@ pip install chess_gif
 
 ## Usage Example
 
-This is a sample PGN file. 
+This is how a sample PGN file looks like. 
 
 ```
 [Event "F/S Return Match"]
@@ -48,11 +48,17 @@ hxg5 29. b3 Ke6 30. a3 Kd6 31. axb4 cxb4 32. Ra5 Nd5 33. f3 Bc8 34. Kf2 Bf5
 Nf2 42. g4 Bd3 43. Re6 1/2-1/2
 ```
 
+Save this text in a file with .pgn extension.
+
+Run the following code to create a GIF !
+
 ```python3 
     >>> from chess_gif.gif_maker import Gifmaker
     >>> obj = Gifmaker(pgn_file_path, h_margin = 20 , v_margin = 80 )
     >>> obj.make_gif('chess_game.gif)
 ```
+
+The GIF should be generated in your current working directory.
 
 <p align="center">
 <img src="https://github.com/fork52/chess_gif/blob/master/docs/chess_game.gif" 
@@ -103,4 +109,4 @@ The repository is licensed under [MIT License](license-url).
 [pyvips-bin]:https://libvips.github.io/libvips/install.html
 [pygifsicle]:https://github.com/LucaCappelletti94/pygifsicle
 [gifsicle-port]:https://eternallybored.org/misc/gifsicle/
-[pypi-link]:https://google.com
+[pypi-link]:https://pypi.org/project/chess-gif/
