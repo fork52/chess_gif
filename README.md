@@ -96,7 +96,7 @@ The repository is licensed under [MIT License](license-url).
 5. Create a new Pull Request
 
 <!-- Markdown link & img dfn's -->
-
+<!-- 
 [license-url] : https://github.com/fork52/chess_gif/blob/master/LICENSE
 [repo-url] :https://github.com/fork52/chess_gif
 [lichess] :https://lichess.org/
@@ -109,5 +109,5 @@ The repository is licensed under [MIT License](license-url).
 [pyvips-bin] :https://libvips.github.io/libvips/install.html
 [pygifsicle] :https://github.com/LucaCappelletti94/pygifsicle
 [gifsicle-port] :https://eternallybored.org/misc/gifsicle/
-[pypi-link] :https://pypi.org/project/chess-gif/
+[pypi-link] :https://pypi.org/project/chess-gif/ -->
 
