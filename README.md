@@ -1,6 +1,10 @@
 # chess_gif
 
-**[chess_gif][repo-url]** is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games.
+**[chess_gif][repo-url] is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games.**
+
+[![MIT License][license-img]][license-url]
+[![Code size][codesize-img]][repo-url]
+
 
 ## Description
 **chess_gif** provides allows users to create highly customizable and optimized GIFs from the PGN files of their chess games. 
@@ -15,7 +19,7 @@ pip install chess_gif
 
 **chess_gif** requires [pyvips][pyvips] and [pygifsicle][pygifsicle] as its dependencies:
 
-1. Windows users need to download the pyvip's binaries and add `vips-dev-x.y\bin` to their `PATH` variable for its installation. You can download the binaries by [clicking here][pyvips-bin]]. Linux and macOS users need not worry about this and can simply skip this step. For further details, refer [pyvip's installation guide][pyvips-install].
+1. Windows users need to download the pyvip's binaries and add `vips-dev-x.y\bin` to their `PATH` variable for its installation. You can download the binaries by [clicking here][pyvips-bin]. Linux and macOS users need not worry about this and can simply skip this step. For further details, refer [pyvip's installation guide][pyvips-install].
 
 2. While running the installation, on MacOS the setup will automatically install gifsicle using [Brew](https://brew.sh/).  
 
@@ -60,10 +64,10 @@ Run the following code to create a GIF !
 
 The GIF should be generated in your current working directory.
 
-<!-- <p align="center">
+<p align="center">
 <img src="https://github.com/fork52/chess_gif/blob/master/docs/chess_game.gif" 
 width="55%" height="55%">
-</p> -->
+</p>
 
 
 ## Dependencies
@@ -96,17 +100,19 @@ The repository is licensed under [MIT License][license-url] .
 5. Create a new Pull Request
 
 <!-- Markdown link & img dfn's -->
+[imageio]:https://github.com/imageio/imageio
 [license-url]:https://github.com/fork52/chess_gif/blob/master/LICENSE
+[license-img]:https://img.shields.io/github/license/fork52/chess_gif
 [repo-url]:https://github.com/fork52/chess_gif
 [lichess]:https://lichess.org/
 [lichess-repo]:https://github.com/ornicar/lila
 [python-chess]:https://python-chess.readthedocs.io/en/latest
 [PIL]:https://pypi.org/project/Pillow/
-[imageio]:https://github.com/imageio/imageio
 [pyvips-install]:https://libvips.github.io/pyvips/README.html#non-conda-install
 [pyvips]:https://github.com/libvips/pyvips
 [pyvips-bin]:https://libvips.github.io/libvips/install.html
 [pygifsicle]:https://github.com/LucaCappelletti94/pygifsicle
 [gifsicle-port]:https://eternallybored.org/misc/gifsicle/
 [pypi-link]:https://pypi.org/project/chess-gif/
+[codesize-img]:https://img.shields.io/github/repo-size/fork52/chess_gif?color=orange
 
