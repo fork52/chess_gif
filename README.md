@@ -1,21 +1,21 @@
 # chess_gif
 
-**[chess_gif](repo-url)** is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games.
+**[chess_gif][repo-url]** is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games.
 
 ## Description
 **chess_gif** provides allows users to create highly customizable and optimized GIFs from the PGN files of their chess games. 
 
 ## Installation
 
-You can install chess_gif from [PyPI](pypi-link).
+You can install chess_gif from [PyPI][pypi-link].
 
 ```
 pip install chess_gif
 ```
 
-**chess_gif** requires [pyvips](pyvips) and [pygifsicle](pygifsicle) as its dependencies:
+**chess_gif** requires [pyvips][pyvips] and [pygifsicle][pygifsicle] as its dependencies:
 
-1. Windows users need to download the pyvip's binaries and add `vips-dev-x.y\bin` to their `PATH` variable for its installation. You can download the binaries by [clicking here](pyvips-bin]). Linux and macOS users need not worry about this and can simply skip this step. For further details, refer [pyvip's installation guide](pyvips-install).
+1. Windows users need to download the pyvip's binaries and add `vips-dev-x.y\bin` to their `PATH` variable for its installation. You can download the binaries by [clicking here][pyvips-bin]]. Linux and macOS users need not worry about this and can simply skip this step. For further details, refer [pyvip's installation guide][pyvips-install].
 
 2. While running the installation, on MacOS the setup will automatically install gifsicle using [Brew](https://brew.sh/).  
 
@@ -23,7 +23,7 @@ pip install chess_gif
 
        sudo apt-get install gifsicle 
 
-   On Windows you will need to download and install the [appropriate port of the library](gifsicle-port) for your OS. Add the path to `gifsicle.exe` file to your `PATH` variable.
+   On Windows you will need to download and install the [appropriate port of the library][gifsicle-port] for your OS. Add the path to `gifsicle.exe` file to your `PATH` variable.
 
 ## Usage Example
 
@@ -60,32 +60,32 @@ Run the following code to create a GIF !
 
 The GIF should be generated in your current working directory.
 
-<p align="center">
+<!-- <p align="center">
 <img src="https://github.com/fork52/chess_gif/blob/master/docs/chess_game.gif" 
 width="55%" height="55%">
-</p>
+</p> -->
 
 
 ## Dependencies
 
-1. [python-chess](python-chess) : python-chess is a pure Python chess library with move generation, move validation and support for common formats. chess_gif uses python-chess for parsing pgn files and also for creating a board represenation of the chess games.
+1. [python-chess][python-chess] : python-chess is a pure Python chess library with move generation, move validation and support for common formats. chess_gif uses python-chess for parsing pgn files and also for creating a board represenation of the chess games.
 
-2. [Python Imaging Library](PIL) : Pillow is the friendly PIL fork by Alex Clark and Contributors. PIL is the Python Imaging Library by Fredrik Lundh and Contributors. 
+2. [Python Imaging Library][PIL] : Pillow is the friendly PIL fork by Alex Clark and Contributors. PIL is the Python Imaging Library by Fredrik Lundh and Contributors. 
 
-3. [imageio](imageio) : Imageio is a Python library that provides an easy interface to read and write a wide range of image data, including animated images, video, volumetric data, and scientific formats. It is cross-platform, runs on Python 3.5+, and is easy to install. chess_gif is using imageio for creating the GIFs from frames generated using PIL.
+3. [imageio][imageio] : Imageio is a Python library that provides an easy interface to read and write a wide range of image data, including animated images, video, volumetric data, and scientific formats. It is cross-platform, runs on Python 3.5+, and is easy to install. chess_gif is using imageio for creating the GIFs from frames generated using PIL.
 
-4. [pyvips](pyvips) : The module wraps the libvips image processing library. It needs the libvips shared library on your library search path, version 8.2 or later. The library has been utilized in chess_gif for svg rendering.
+4. [pyvips][pyvips] : The module wraps the libvips image processing library. It needs the libvips shared library on your library search path, version 8.2 or later. The library has been utilized in chess_gif for svg rendering.
 
-5. [pygifsicle](pygifsicle): Python package wrapping the gifsicle library for editing and optimizing gifs.
+5. [pygifsicle][pygifsicle]: Python package wrapping the gifsicle library for editing and optimizing gifs.
 
 ## Credits
-* The piece themes used for the repository have been taken from the publicly available themes taken from [lichess.org's](lichess) amazing [repository-lila](lichess-repo).
+* The piece themes used for the repository have been taken from the publicly available themes taken from [lichess.org's][lichess] amazing [repository-lila][lichess-repo].
 
-* [python-chess](python-chess)'s pgn parser made it extremely easy for parsing the PGN files for rendering GIFs.
+* [python-chess's][python-chess] pgn parser made it extremely easy for parsing the PGN files for rendering GIFs.
 
 
 ## License
-The repository is licensed under [MIT License](license-url).
+The repository is licensed under [MIT License][license-url] .
 
 ## Contributing
 
@@ -96,18 +96,17 @@ The repository is licensed under [MIT License](license-url).
 5. Create a new Pull Request
 
 <!-- Markdown link & img dfn's -->
-<!-- 
-[license-url] : https://github.com/fork52/chess_gif/blob/master/LICENSE
-[repo-url] :https://github.com/fork52/chess_gif
-[lichess] :https://lichess.org/
-[lichess-repo] :https://github.com/ornicar/lila
-[python-chess] :https://python-chess.readthedocs.io/en/latest/
-[PIL] :https://pypi.org/project/Pillow/
-[imageio] :https://github.com/imageio/imageio
-[pyvips-install] :https://libvips.github.io/pyvips/README.html#non-conda-install
-[pyvips] :https://github.com/libvips/pyvips
-[pyvips-bin] :https://libvips.github.io/libvips/install.html
-[pygifsicle] :https://github.com/LucaCappelletti94/pygifsicle
-[gifsicle-port] :https://eternallybored.org/misc/gifsicle/
-[pypi-link] :https://pypi.org/project/chess-gif/ -->
+[license-url]:https://github.com/fork52/chess_gif/blob/master/LICENSE
+[repo-url]:https://github.com/fork52/chess_gif
+[lichess]:https://lichess.org/
+[lichess-repo]:https://github.com/ornicar/lila
+[python-chess]:https://python-chess.readthedocs.io/en/latest
+[PIL]:https://pypi.org/project/Pillow/
+[imageio]:https://github.com/imageio/imageio
+[pyvips-install]:https://libvips.github.io/pyvips/README.html#non-conda-install
+[pyvips]:https://github.com/libvips/pyvips
+[pyvips-bin]:https://libvips.github.io/libvips/install.html
+[pygifsicle]:https://github.com/LucaCappelletti94/pygifsicle
+[gifsicle-port]:https://eternallybored.org/misc/gifsicle/
+[pypi-link]:https://pypi.org/project/chess-gif/
 
