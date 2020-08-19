@@ -56,7 +56,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2
 
 <p align="center">
 <img src="https://github.com/fork52/chess_gif/blob/master/docs/chess_game.gif" 
-width="80%" height="80%">
+width="50%" height="50%">
 </p>
 
 
