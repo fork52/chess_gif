@@ -1,4 +1,4 @@
-from chess_gif.create_frame import Chess_Image
+from .create_frame import Chess_Image
 from chess import pgn as pgn_reader
 from chess import flip_vertical,Board
 from typing import Iterable

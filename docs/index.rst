@@ -1,4 +1,4 @@
-.. chess-gif documentation master file, created by
+.. chess_gif documentation master file, created by
    sphinx-quickstart on Sun Aug 16 15:47:56 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
