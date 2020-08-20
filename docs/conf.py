@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../chess_gif/'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'chess-gif'
+project = 'chess_gif'
 copyright = '2020, Mrunank Mistry, Dhruvam Kothari'
 author = 'Mrunank Mistry, Dhruvam Kothari'
 
