@@ -54,3 +54,10 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+# This value contains a list of modules to be mocked up. 
+# This is useful when some external dependencies are not met at build time and break
+# the building process. You may only specify the root package of the dependencies themselves 
+# and omit the sub-modules:
+autodoc_mock_imports = ["pyvips" , "pygifsicle"]
