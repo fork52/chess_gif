@@ -1,13 +1,13 @@
-# chess_gif
+# chess_gif : Convert chess PGNs to GIFs
 
-**[chess_gif][repo-url] is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games.**
+**[chess_gif][repo-url] is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games. chess_gif provides allows users to create highly customizable and optimized GIFs from the PGN files of their chess games.**
+
 
 [![MIT License][license-img]][license-url]
 [![Code size][codesize-img]][repo-url]
+[![Documentation Status](https://readthedocs.org/projects/chess-gif/badge/?version=latest)](https://chess-gif.readthedocs.io/en/latest/?badge=latest)
+[![Downloads](https://pepy.tech/badge/chess-gif)](https://pepy.tech/project/chess-gif)
 
-
-## Description
-**chess_gif** provides allows users to create highly customizable and optimized GIFs from the PGN files of their chess games. 
 
 ## Installation
 
@@ -28,6 +28,10 @@ pip install chess_gif
        sudo apt-get install gifsicle 
 
    On Windows you will need to download and install the [appropriate port of the library][gifsicle-port] for your OS. Add the path to `gifsicle.exe` file to your `PATH` variable.
+
+
+## Documentation
+Check out the documentation: [chess_gif docs](https://chess-gif.readthedocs.io)
 
 ## Usage Example
 
