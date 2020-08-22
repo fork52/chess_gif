@@ -8,6 +8,7 @@ from imageio import mimwrite
 import os
 import errno
 from pkg_resources import resource_string
+from .constants import ice_theme
 
 class Gifmaker:
     '''
@@ -21,7 +22,7 @@ class Gifmaker:
     Other Parameters
     ----------------
     colors : `tuple`, optional
-        colors for white and black squares.. Default ``( '#9e3725','#ffe0b3' )``.
+        colors for white and black squares.. Default `` ('#dee3e6','#8ca2ad') ``.
     piece_theme : `str`, optional
         Choose one of the available piece_themes.
         Default ``merida``.
@@ -59,9 +60,7 @@ class Gifmaker:
 
     '''
 
-    yellow_green =  ( '#ffffdd','#86a666')
-    brown_off_white = ('#f0d9b5', '#b58863')
-    blue_white = ('#dee3e6','#8ca2ad')
+
 
     def __init__(self, 
                 pgn_file_path:str, 
@@ -70,7 +69,7 @@ class Gifmaker:
         """
 
         # Set all the kwargs to default values if not provided
-        kwargs.setdefault('colors', ('#dee3e6','#8ca2ad') )
+        kwargs.setdefault('colors', ice_theme)
         kwargs.setdefault('piece_theme','merida')
         kwargs.setdefault('side',70)
         kwargs.setdefault('h_margin',0)
@@ -171,17 +170,12 @@ class Gifmaker:
 
 
 if __name__ == "__main__":
+'
+    # pgn_file_path = r'data\pgn\lichess_pgn_2020.08.01_Mrunank_vs_Blindtakes34.E2og9BtO.pgn'
+    # obj = Gifmaker(pgn_file_path, piece_theme = 'merida' )
+    # obj.make_gif('hello.gif')
 
-    # pgn_file_path = 'data/pgn/MikelOjda_vs_iDontTalkiDoIt_2020.03.19.pgn'
-    # pgn_file_path = 'data\\pgn\\lichess_pgn_2020.08.03_Mrunank_vs_prem_singh_bhati.gKZs5DjG.pgn'
-    pgn_file_path = r'data\pgn\lichess_pgn_2020.08.01_Mrunank_vs_Blindtakes34.E2og9BtO.pgn'
-
-    # yellow_green = (  '#ffffdd','#86a666')
-    # brown_off_white = ('#f0d9b5', '#b58863')
-    # blue_white = ('#dee3e6','#8ca2ad')
-
-    obj = Gifmaker(pgn_file_path, colors=Gifmaker.blue_white, piece_theme = 'merida' )
-    obj.make_gif('hello.gif')
+    pass
 
 
 

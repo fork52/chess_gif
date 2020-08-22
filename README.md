@@ -1,6 +1,6 @@
 # chess_gif : Convert chess PGNs to GIFs
 
-**[chess_gif][repo-url] is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games. chess_gif provides allows users to create highly customizable and optimized GIFs from the PGN files of their chess games.**
+**[chess_gif][repo-url] is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games. chess_gif allows users to create highly customizable and optimized GIFs from the PGN files of their chess games.**
 
 
 [![MIT License][license-img]][license-url]
