@@ -12,12 +12,12 @@ format which is the standard plain text format for recording chess games.
 **chess_gif** provides allows users to create highly customizable and optimized GIFs from the
 ``PGN`` files of your chess games.
 
+..include:: Installation.rst
 
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
    modules
-   Installation
 
 .. ..automodule:: gifmaker:
 ..    :members:
