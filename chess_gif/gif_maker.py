@@ -34,6 +34,9 @@ class Gifmaker:
     v_margin : `int`, optional
         Black vertical margin around the chess_board to be rendered in the GIF. 
         Default ``0``.
+    delay : `float`, optional
+        Delay in seconds betweeen individual moves.
+        Default ``1``.
 
 
     Example
@@ -74,6 +77,7 @@ class Gifmaker:
         kwargs.setdefault('side',70)
         kwargs.setdefault('h_margin',0)
         kwargs.setdefault('v_margin',0)
+        kwargs.setdefault('delay', 1 )
 
         pprint(kwargs)
         
@@ -158,7 +162,8 @@ class Gifmaker:
 
         mimwrite( 
             gif_file_path,
-            frames, duration = 1,
+            frames, 
+            duration = self.kwargs['delay'],
             subrectangles = True ,
             palettesize = 256 # default = 256
         )
@@ -170,11 +175,9 @@ class Gifmaker:
 
 
 if __name__ == "__main__":
-'
     # pgn_file_path = r'data\pgn\lichess_pgn_2020.08.01_Mrunank_vs_Blindtakes34.E2og9BtO.pgn'
     # obj = Gifmaker(pgn_file_path, piece_theme = 'merida' )
     # obj.make_gif('hello.gif')
-
     pass
 
 

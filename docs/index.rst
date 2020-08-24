@@ -16,8 +16,8 @@ format which is the standard plain text format for recording chess games.
 .. toctree::
    :maxdepth: 3
    :caption: Contents:
-
    modules
+   Installation
 
 .. ..automodule:: gifmaker:
 ..    :members:
