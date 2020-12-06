@@ -63,7 +63,7 @@ Run the following code to create a GIF !
 ```python3 
     >>> from chess_gif.gif_maker import Gifmaker
     >>> obj = Gifmaker(pgn_file_path, h_margin = 20 , v_margin = 80 )
-    >>> obj.make_gif('chess_game.gif)
+    >>> obj.make_gif('chess_game.gif')
 ```
 
 The GIF should be generated in your current working directory.
