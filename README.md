@@ -2,12 +2,28 @@
 
 **[chess_gif][repo-url] is a python library for easily making GIFs of chess games in `PGN` (Portable Game Notation) format which is the standard plain text format for recording chess games. chess_gif allows users to create highly customizable and optimized GIFs from the PGN files of their chess games.**
 
+<p align="center">
+  <a href="https://github.com/fork52/chess_gif/blob/master/LICENSE">
+      <img alt="MIT License" src="https://img.shields.io/github/license/fork52/chess_gif?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/fork52/chess_gif">
+      <img alt="Code-Size" src="https://img.shields.io/github/repo-size/fork52/chess_gif?color=orange&style=for-the-badge" />
+  </a>
+  <a href="https://chess-gif.readthedocs.io/en/latest/?badge=latest">
+      <img alt="Documentation" src="https://readthedocs.org/projects/chess-gif/badge/?version=latest&style=for-the-badge" />
+  </a>
+  <a href="https://pepy.tech/project/chess-gif">
+      <img alt="Downloads" src="https://pepy.tech/badge/chess-gif" />
+  </a>
+  
+</p>
 
+<!--
 [![MIT License][license-img]][license-url]
 [![Code size][codesize-img]][repo-url]
 [![Documentation Status](https://readthedocs.org/projects/chess-gif/badge/?version=latest)](https://chess-gif.readthedocs.io/en/latest/?badge=latest)
 [![Downloads](https://pepy.tech/badge/chess-gif)](https://pepy.tech/project/chess-gif)
-
+-->
 
 ## Installation
 
