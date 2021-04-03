@@ -1,4 +1,4 @@
-from .create_frame import Chess_Image
+from chess_gif.create_frame import Chess_Image
 from chess import pgn as pgn_reader
 from chess import flip_vertical,Board
 from typing import Iterable
@@ -62,8 +62,6 @@ class Gifmaker:
         These are the publicly available themes taken from **lichess.org's** amazing `repository-lila <https://github.com/ornicar/lila>`_ .
 
     '''
-
-
 
     def __init__(self, 
                 pgn_file_path:str, 
@@ -168,16 +166,14 @@ class Gifmaker:
             palettesize = 256 # default = 256
         )
         
+        # print(gif_file_path)
+        # print("Cur_path:" , os.getcwd())
         optimize_gif(gif_file_path)
 
         # print(self.white_timeline)
         # print(self.black_timeline)
 
-
 if __name__ == "__main__":
-    # pgn_file_path = r'data\pgn\lichess_pgn_2020.08.01_Mrunank_vs_Blindtakes34.E2og9BtO.pgn'
-    # obj = Gifmaker(pgn_file_path, piece_theme = 'merida' )
-    # obj.make_gif('hello.gif')
     pass
 
 

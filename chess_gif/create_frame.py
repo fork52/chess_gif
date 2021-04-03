@@ -8,7 +8,7 @@ from chess import Board
 
 class Chess_Image:
     """
-    Creates Single Image frames for as for rendering the GIFs
+    Creates Single Image frames for rendering the GIFs
     as per requirements.
 
     Parameters
@@ -148,7 +148,7 @@ class Chess_Pieces:
             'R':'wR' , 'Q':'wQ' , 'N':'wN' , 'K' : 'wK' , 'P':'wP', 'B':'wB'
         }
 
-        # Reads the available piece theme's .svg images and save them as .png of appropraite size
+        # Reads the available piece theme's .svg images and save them as .png images of appropraite size
         for piece in self.pieces_map:
             piece_path = os.path.join(piece_dir,  self.pieces_map[piece]+'.svg')
             image = VipsImage.thumbnail(piece_path, size , height=size)
@@ -157,7 +157,7 @@ class Chess_Pieces:
         
         #: Dictionary where pieces are the keys and corresponding PIL Images are the values
         self.piece_imgs = dict()
-        for piece in  self.pieces_map:
+        for piece in self.pieces_map:
             self.piece_imgs[piece] = Image.open(f"Images/{ self.pieces_map[piece]}.png")
 
     
