@@ -8,7 +8,7 @@ from imageio import mimwrite
 import os , io
 import errno
 from pkg_resources import resource_string
-from .constants import ice_theme
+from .constants import ICE_THEME
 
 
 class Gifmaker:
