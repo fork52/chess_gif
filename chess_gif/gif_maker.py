@@ -1,14 +1,15 @@
 from chess_gif.create_frame import Chess_Image
 from chess import pgn as pgn_reader
-from chess import flip_vertical,Board
+from chess import flip_vertical, Board
 from typing import Iterable
 from pprint import pprint
 from pygifsicle import optimize as optimize_gif
 from imageio import mimwrite
-import os
+import os , io
 import errno
 from pkg_resources import resource_string
 from .constants import ice_theme
+
 
 class Gifmaker:
     '''
@@ -58,48 +59,75 @@ class Gifmaker:
         Following are the available piece-themes:
 
         **{ 'alpha', 'california' , 'cardinal' , 'cburnett' , 'chess7' , 'chessnut' , 'companion' , 'dubrovny' , 'fantasy' , 'fresca' , 'gioco' , 'icpieces' , 'kosal' , 'leipzig' , 'letter' , 'libra' , 'maestro' , 'merida' , 'mono' , 'pirouetti' , 'pixel' , 'reillycraig' , 'riohacha' , 'shapes' , 'spatial' , 'staunty' , 'tatiana' }**.
-        
+
         These are the publicly available themes taken from **lichess.org's** amazing `repository-lila <https://github.com/ornicar/lila>`_ .
 
     '''
 
-    def __init__(self, 
-                pgn_file_path:str, 
-                **kwargs:dict ):
-        """Constructor method
-        """
+    def __init__(self, **kwargs: dict):
 
         # Set all the kwargs to default values if not provided
         kwargs.setdefault('colors', ice_theme)
-        kwargs.setdefault('piece_theme','merida')
-        kwargs.setdefault('side',70)
-        kwargs.setdefault('h_margin',0)
-        kwargs.setdefault('v_margin',0)
-        kwargs.setdefault('delay', 1 )
+        kwargs.setdefault('piece_theme', 'merida')
+        kwargs.setdefault('side', 70)
+        kwargs.setdefault('h_margin', 0)
+        kwargs.setdefault('v_margin', 0)
+        kwargs.setdefault('delay', 1)
 
         pprint(kwargs)
-        
+
         self.kwargs = kwargs
 
-        # Check if file exists
-        if not os.path.isfile(pgn_file_path):
-            raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path) 
-
-        self.pgn_file_path = pgn_file_path
-
-
-    def make_gif( self, gif_file_path:str = 'chess.gif' ):
-        '''
-        Makes the gif of the loaded pgn at the specified destination file path.
+    
+    def make_gif_from_pgn_string(self, pgn_string : str, gif_file_path: str = 'chess.gif'):
+        ''' 
+        Makes gif for the loaded pgn at the specified destination file path.
 
         Parameters
         ----------
+        pgn_string  : string
+            A valid pgn string
+
         gif_file_path : str
             Destination directory to store the gif file.
-
         '''
-        
-        pgn_file = open(self.pgn_file_path)
+        pgn_file = io.StringIO(pgn_string)
+        self.__make_gif( pgn_file , gif_file_path )
+
+
+    def make_gif_from_pgn_file(self, pgn_file_path:str, gif_file_path: str = 'chess.gif'):
+        ''' 
+        Makes gif for the loaded pgn at the specified destination file path.
+
+        Parameters
+        ----------
+        pgn_file : file
+            A pgn file containing chess game
+
+        gif_file_path : str
+            Destination directory to store the gif file.
+        '''
+        # Check if file exists
+        if not os.path.isfile(pgn_file_path):
+            raise FileNotFoundError(
+                errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path)
+
+        pgn_file = open(pgn_file_path)
+        self.__make_gif( pgn_file , gif_file_path )
+
+
+    def __make_gif(self, pgn_file : str, gif_file_path: str):
+        '''
+        Makes gif for the loaded pgn at the specified destination file path.
+
+        Parameters
+        ----------
+        pgn_file : file
+            A valid pgn string or 
+
+        gif_file_path : str
+            Destination directory to store the gif file.
+        '''
 
         chess_game = pgn_reader.read_game(pgn_file)
 
@@ -120,7 +148,7 @@ class Gifmaker:
         # get string notation of the game
         # print(str( chess_game.game()).replace('\n','') )
 
-        #get the start position
+        # get the start position
         # print(chess_game.board() )
 
         self.white_timeline = []
@@ -135,46 +163,39 @@ class Gifmaker:
 
                 current_board = node.board()
                 self.board_states.append(current_board)
-                
+
                 if current_board.turn:
                     self.white_timeline.append(time_left)
                 else:
                     self.black_timeline.append(time_left)
 
                 # White's perspective
-                # print('\n',current_board)  
+                # print('\n',current_board)
 
                 # # Black's perspective
                 # print( '\n',current_board.transform( flip_vertical ))
-        
+
         obj = Chess_Image(
-                        colors = self.kwargs['colors'],
-                        side = self.kwargs['side'], 
-                        piece_theme = self.kwargs['piece_theme'],
-                        h_margin=self.kwargs['h_margin'],
-                        v_margin=self.kwargs['v_margin']
-            )
-        
-
-        frames =  list( map(lambda x:obj.create_position(x) , self.board_states ) )
-
-        mimwrite( 
-            gif_file_path,
-            frames, 
-            duration = self.kwargs['delay'],
-            subrectangles = True ,
-            palettesize = 256 # default = 256
+            colors=self.kwargs['colors'],
+            side=self.kwargs['side'],
+            piece_theme=self.kwargs['piece_theme'],
+            h_margin=self.kwargs['h_margin'],
+            v_margin=self.kwargs['v_margin']
         )
-        
-        # print(gif_file_path)
-        # print("Cur_path:" , os.getcwd())
+
+        frames = list( map(lambda x: obj.create_position(x), self.board_states) )
+
+        mimwrite(
+            gif_file_path,
+            frames,
+            duration=self.kwargs['delay'],
+            subrectangles=True,
+            palettesize=256  # default = 256
+        )
+
         optimize_gif(gif_file_path)
 
-        # print(self.white_timeline)
-        # print(self.black_timeline)
+
 
 if __name__ == "__main__":
     pass
-
-
-
