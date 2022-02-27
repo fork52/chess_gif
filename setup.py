@@ -21,9 +21,9 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
-    include_package_data=True,
-    zip_safe=False,
+    python_requires = '>=3.10.0', 
+    include_package_data = True,
+    zip_safe = False,
     keywords = ['Chess GIF','PGN']
 
 )
