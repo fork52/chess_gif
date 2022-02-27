@@ -125,7 +125,7 @@ class Chess_Image:
                     base_img.paste(piece_img, self.get_location(r,c), mask = piece_img)
         return base_img
 
-    def get_location(self, row:int, col:int) -> Tuple[2]:
+    def get_location(self, row:int, col:int) -> Tuple[int, int]:
             x = self.horizantal_margin + col*self.side
             y = self.vertical_margin + row*self.side
             return x, y
