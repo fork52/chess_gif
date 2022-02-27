@@ -67,7 +67,7 @@ class Gifmaker:
     def __init__(self, **kwargs: dict):
 
         # Set all the kwargs to default values if not provided
-        kwargs.setdefault('colors', ice_theme)
+        kwargs.setdefault('colors', ICE_THEME)
         kwargs.setdefault('piece_theme', 'merida')
         kwargs.setdefault('side', 70)
         kwargs.setdefault('h_margin', 0)
@@ -109,8 +109,7 @@ class Gifmaker:
         '''
         # Check if file exists
         if not os.path.isfile(pgn_file_path):
-            raise FileNotFoundError(
-                errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path)
+            raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path)
 
         pgn_file = open(pgn_file_path)
         self.__make_gif( pgn_file , gif_file_path )
@@ -176,11 +175,11 @@ class Gifmaker:
                 # print( '\n',current_board.transform( flip_vertical ))
 
         obj = Chess_Image(
-            colors=self.kwargs['colors'],
-            side=self.kwargs['side'],
-            piece_theme=self.kwargs['piece_theme'],
-            h_margin=self.kwargs['h_margin'],
-            v_margin=self.kwargs['v_margin']
+            colors = self.kwargs['colors'],
+            side = self.kwargs['side'],
+            piece_theme = self.kwargs['piece_theme'],
+            h_margin = self.kwargs['h_margin'],
+            v_margin = self.kwargs['v_margin']
         )
 
         frames = list( map(lambda x: obj.create_position(x), self.board_states) )
@@ -188,9 +187,9 @@ class Gifmaker:
         mimwrite(
             gif_file_path,
             frames,
-            duration=self.kwargs['delay'],
-            subrectangles=True,
-            palettesize=256  # default = 256
+            duration = self.kwargs['delay'],
+            subrectangles = True,
+            palettesize = 256  # default = 256
         )
 
         optimize_gif(gif_file_path)

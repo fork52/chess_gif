@@ -1,10 +1,9 @@
-from typing import Iterable,List
+from typing import Iterable, List, Tuple
 from PIL import Image , ImageDraw
 from pprint import pprint
-import os 
+import os
 from pyvips import Image as VipsImage
 from chess import Board
-
 
 class Chess_Image:
     """
@@ -51,8 +50,8 @@ class Chess_Image:
         self.white_color , self.black_color = colors
 
         # Validating side of the square
-        assert isinstance(side,int),'side should be an int.'
-        assert side > 10  , 'side should be greater than 10 pixels.'
+        assert isinstance(side, int),'side should be an int.'
+        assert side > 10 , 'side should be greater than 10 pixels.'
         #: side of one square on the chessboard in pixels
         self.side = side
 
@@ -75,7 +74,7 @@ class Chess_Image:
         os.chdir(cwd)
 
 
-    def create_initial_board(self):
+    def create_initial_board(self) -> Image:
         '''
         Returns a PIL image object of the base chess board without pieces.
         '''
@@ -101,56 +100,54 @@ class Chess_Image:
             for j in range(8):
                 x1 = self.horizantal_margin + self.side * j
                 x2 =  x1 + self.side
-                if (i+j) % 2 == 0:
+                if (i + j) % 2 == 0:
                     color = self.white_color
                 else:
                     color = self.black_color
-                ImageDrawer.rectangle( (x1,y1,x2,y2), fill =color, outline =color)
+                ImageDrawer.rectangle( (x1,y1,x2,y2), fill = color, outline =color)
 
         # self.board_img.save('Images/result.png') # To be removed 
         return self.board_img
 
 
 
-    def create_position(self,current_position:Board):
+    def create_position(self, current_position:Board) -> Image:
         '''
         Renders passed current_postion on to the chess board.
         '''
-        board_list = list( map( lambda s:s.split(),str(current_position).split('\n')) )
+        board_list = list(map(lambda s:s.split(),str(current_position).split('\n')) )
         base_img = self.board_img.copy()
         for r in range(8):
             for c in range(8):
                 piece = board_list[r][c]
-                if  piece!= '.':
+                if piece != '.':
                     piece_img = self.pieces.piece_imgs[piece]
-                    base_img.paste( piece_img, self.get_location(r,c), mask=piece_img )
-        # base_img.save('Images/board_pieces.png') #To be removed
+                    base_img.paste(piece_img, self.get_location(r,c), mask = piece_img)
         return base_img
 
-    def get_location(self,row:int,col:int)->tuple:
+    def get_location(self, row:int, col:int) -> Tuple[2]:
             x = self.horizantal_margin + col*self.side
             y = self.vertical_margin + row*self.side
-            return x,y
+            return x, y
 
 
 class Chess_Pieces:
     """
     Loads the Chess_Pieces from memory in PIL objects.
     """
-    def __init__(self,piece_theme:str , size:int = 70 ):
+    def __init__(self, piece_theme : str, size : int = 70):
 
-
-        piece_dir = os.path.join( 'data','piece', piece_theme )
+        piece_dir = os.path.join('data', 'piece', piece_theme)
 
         #: Maps pieces to their corresponding .svg filenames
         self.pieces_map ={
-            'r':'bR' , 'q':'bQ' , 'n':'bN' , 'k' : 'bK' , 'p':'bP', 'b':'bB',
-            'R':'wR' , 'Q':'wQ' , 'N':'wN' , 'K' : 'wK' , 'P':'wP', 'B':'wB'
+            'r':'bR', 'q':'bQ', 'n':'bN', 'k':'bK', 'p':'bP', 'b':'bB',
+            'R':'wR', 'Q':'wQ', 'N':'wN', 'K':'wK', 'P':'wP', 'B':'wB'
         }
 
         # Reads the available piece theme's .svg images and save them as .png images of appropraite size
         for piece in self.pieces_map:
-            piece_path = os.path.join(piece_dir,  self.pieces_map[piece]+'.svg')
+            piece_path = os.path.join(piece_dir,  self.pieces_map[piece] + '.svg')
             image = VipsImage.thumbnail(piece_path, size , height=size)
             image.write_to_file(f"Images/{ self.pieces_map[piece]}.png")
         
