@@ -74,7 +74,7 @@ class Gifmaker:
         kwargs.setdefault('v_margin', 0)
         kwargs.setdefault('delay', 1)
 
-        pprint(kwargs)
+        # pprint(kwargs)
 
         self.kwargs = kwargs
 

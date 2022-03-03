@@ -1,4 +1,4 @@
 include README.md LICENSE
 recursive-include docs/build *
-recursive-include chess_gif/Images *
-recursive-include chess_gif/data *
+recursive-include src/chess_gif/Images *
+recursive-include src/chess_gif/data *

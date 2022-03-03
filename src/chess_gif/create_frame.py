@@ -57,6 +57,7 @@ class Chess_Image:
 
         # Validating piece theme
         assert isinstance( piece_theme ,str ),'piece_theme should be a string.'
+        print(os.getcwd())
         valid_piece_themes =  os.listdir('data/piece/')   # Get all the available piece_themes
         piece_theme_stmt = f'{piece_theme} is not a valid piece_theme. Choose one of the following piece themes:\n{valid_piece_themes} .'
         assert piece_theme in valid_piece_themes, piece_theme_stmt
