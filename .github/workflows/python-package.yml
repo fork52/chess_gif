@@ -28,6 +28,8 @@ jobs:
         sudo apt-get install -y gifsicle
         python -m pip install --upgrade pip
         python -m pip install flake8 pytest build
+        pip uninstall pyvips
+        pip install pyvips --no-cache-dir
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         python -m build
         pip3 install .
