@@ -52,6 +52,7 @@ class Chess_Image:
         # Validating side of the square
         assert isinstance(side, int),'side should be an int.'
         assert side > 10 , 'side should be greater than 10 pixels.'
+        
         #: side of one square on the chessboard in pixels
         self.side = side
 
