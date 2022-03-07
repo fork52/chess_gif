@@ -1,2 +1,2 @@
-__all__ = ["echo", "surround", "reverse"]
+__all__ = ['create_frame', 'gif_maker']
 
