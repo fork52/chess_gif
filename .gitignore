@@ -109,6 +109,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+chess-gif-venv/
+
 
 # Spyder project settings
 .spyderproject
@@ -139,3 +141,5 @@ automate.bat
 
 #TODO List
 TODO.txt
+sample.gif
+src/chess_gif/Images

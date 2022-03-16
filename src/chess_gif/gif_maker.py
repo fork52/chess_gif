@@ -184,10 +184,12 @@ class Gifmaker:
 
         frames = list( map(lambda x: obj.create_position(x), self.board_states) )
 
+        durations = len(frames) * [self.kwargs['delay']]
+
         mimwrite(
             gif_file_path,
             frames,
-            duration = self.kwargs['delay'],
+            duration = durations,
             subrectangles = True,
             palettesize = 256  # default = 256
         )
