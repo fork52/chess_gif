@@ -142,4 +142,4 @@ automate.bat
 #TODO List
 TODO.txt
 sample.gif
-src/chess_gif/Images
+src/chess_gif/Images/*.png
