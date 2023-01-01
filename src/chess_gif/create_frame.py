@@ -46,15 +46,14 @@ class Chess_Image:
         self.white_color , self.black_color = colors
 
         # Validating side of the square
-        assert isinstance(side, int),'side should be an int.'
-        assert side > 10 , 'side should be greater than 10 pixels.'
+        assert isinstance(side, int),'Board `side` should be an int.'
+        assert side > 10 , 'Board `side` should be greater than 10 pixels.'
         
         #: side of one square on the chessboard in pixels
         self.side = side
 
         # Validating piece theme
-        assert isinstance( piece_theme ,str ),'piece_theme should be a string.'
-
+        assert isinstance(piece_theme , str),'piece_theme should be a string.'
         valid_piece_themes =  os.listdir(os.path.join(root_path, 'data', 'piece'))   
 
         piece_theme_stmt = f'{piece_theme} is not a valid piece_theme. Choose one of the following piece themes:\n{valid_piece_themes} .'
@@ -116,7 +115,7 @@ class Chess_Image:
             for c in range(8):
                 piece = board_list[r][c]
                 if piece != '.':
-                    piece_img = self.pieces.piece_imgs[piece]
+                    piece_img = self.pieces.piece_to_img_dict[piece]
                     base_img.paste(piece_img, self.get_location(r,c), mask = piece_img)
         return base_img
 
@@ -128,37 +127,34 @@ class Chess_Image:
 
 class Chess_Pieces:
     """
-    Loads the Chess_Pieces from memory in PIL objects.
+    Class to load svg images of chess pieces from disk as PIL Image objects.
     """
+
+    piece_to_img_dict : dict
+    """Dictionary where pieces are the keys and corresponding PIL Images are the values"""
+
     def __init__(self, piece_theme : str, size : int = 70):
         root_path = resources.files('chess_gif')
+        piece_svg_dir_path = os.path.join(root_path, 'data', 'piece', piece_theme)
 
-        piece_dir = os.path.join(root_path, 'data', 'piece', piece_theme)
-
-        #: Maps pieces to their corresponding .svg filenames
-        self.pieces_map = {
+        # Maps pieces to their corresponding .svg filenames
+        piecesymbol_to_imgname_dict = {
             'r':'bR', 'q':'bQ', 'n':'bN', 'k':'bK', 'p':'bP', 'b':'bB',
             'R':'wR', 'Q':'wQ', 'N':'wN', 'K':'wK', 'P':'wP', 'B':'wB'
         }
 
         #: Dictionary where pieces are the keys and corresponding PIL Images are the values
-        self.piece_imgs = dict()
+        self.piece_to_img_dict = dict()
 
-        # Reads the available piece theme's .svg images and save them as .png images of appropriate size
-        for piece in self.pieces_map:
-            piece_path = os.path.join(piece_dir,  self.pieces_map[piece] + '.svg')
-            image = VipsImage.thumbnail(piece_path, size , height=size)
-            image_name = self.pieces_map[piece] +  ".png"
+        # Read the available piece theme's .svg images and save them as .png images of appropriate size
+        for piece in piecesymbol_to_imgname_dict:
+            piece_svg_path = os.path.join(piece_svg_dir_path, piecesymbol_to_imgname_dict[piece] + '.svg')
+            image = VipsImage.thumbnail(piece_svg_path, size , height=size)
+            image_name = piecesymbol_to_imgname_dict[piece] + ".png"
             image.write_to_file(os.path.join(root_path, 'Images', image_name))
 
-            self.piece_imgs[piece] = Image.open(os.path.join(root_path, 'Images', image_name))
-        
+            self.piece_to_img_dict[piece] = Image.open(os.path.join(root_path, 'Images', image_name))
 
-            
-
-    
 if __name__ == "__main__":
     obj = Chess_Image(('#ffe0b3','#802b00') , side ='2', piece_theme = 'dog')
     obj.create_position(Board())
-
-        
