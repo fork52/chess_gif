@@ -4,4 +4,4 @@ Pillow==9.3.0
 pygifsicle==1.0.5
 pyvips==2.1.15
 requests==2.26.0
-setuptools==57.4.0
+setuptools==65.5.1
