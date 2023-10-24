@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 chess = "==1.7.0"
 imageio = "==2.11.0"
-pillow = "==9.3.0"
+pillow = "==10.0.1"
 pygifsicle = "==1.0.5"
 pyvips = "==2.1.15"
 requests = "==2.31.0"
