@@ -10,7 +10,7 @@ version: 2
 build:
   os: ubuntu-22.04
   tools:
-    python: "3.9"
+    python: "3.10"
     # You can also specify other tool versions:
     # nodejs: "20"
     # rust: "1.70"
@@ -30,6 +30,6 @@ sphinx:
 
 # Optionally set the version of Python and requirements required to build your docs
 python:
-  version: 3.7
+  version: 3.10
   install:
     - requirements: docs/requirements.txt
