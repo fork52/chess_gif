@@ -1,5 +1,5 @@
 import pytest
-from chess_gif.gif_maker import Gifmaker
+from chess_gif.gif_maker import GIFMaker
 from chess_gif.constants import *
 
 pgn_string = """
@@ -84,7 +84,7 @@ Qe3+ {[%clk 0:01:54.3][%timestamp 41]} 14. Be2 {[%clk 0:01:49.2][%timestamp
 
 def test_clocks_test():
     try:
-        obj = Gifmaker(delay=2)
+        obj = GIFMaker(delay=10)
         obj.make_gif_from_pgn_string(pgn_string_with_clks_chess, 'sample.gif')
         assert True
     except:

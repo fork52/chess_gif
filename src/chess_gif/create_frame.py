@@ -2,11 +2,12 @@ from typing import Tuple
 from PIL import Image, ImageDraw
 import os
 from pyvips import Image as VipsImage
+import chess
 from chess import Board
 from importlib import resources
 
 
-class Chess_Image:
+class ChessImage:
     """
     Creates Single Image frames for rendering the GIFs
     as per requirements.
@@ -63,7 +64,7 @@ class Chess_Image:
         self.piece_theme = piece_theme
 
         # Load the pieces
-        self.pieces = Chess_Pieces(piece_theme, round(side))
+        self.pieces = PieceImages.get_piece_image_dict(piece_theme, round(side))
 
         # Set horizontal and vertical margin
         self.horizantal_margin = h_margin
@@ -105,56 +106,52 @@ class Chess_Image:
 
         return self.board_img
 
-    def create_position(self, current_position: Board) -> Image.Image:
+    def create_board_image(self, board: Board) -> Image.Image:
         """
         Renders passed current_postion on to the chess board.
         """
-        board_list = list(map(lambda s: s.split(), str(current_position).split("\n")))
-        base_img = self.board_img.copy()
-        for r in range(8):
-            for c in range(8):
-                piece = board_list[r][c]
-                if piece != ".":
-                    piece_img = self.pieces.piece_to_img_dict[piece]
-                    base_img.paste(piece_img, self.get_location(r, c), mask=piece_img)
-        return base_img
+        board_img = self.board_img.copy()
+        for rank_index in range(7, -1, -1):
+            for file_index in range(8):
+                piece = board.piece_at(chess.square(rank_index, file_index))
+                if piece is not None:
+                    piece_img = self.pieces[piece]
+                    board_img.paste(piece_img, self._get_location(7 - file_index, rank_index), mask=piece_img)
+        return board_img
 
-    def get_location(self, row: int, col: int) -> Tuple[int, int]:
+    def _get_location(self, row: int, col: int) -> Tuple[int, int]:
         x = self.horizantal_margin + col * self.side
         y = self.vertical_margin + row * self.side
         return x, y
 
 
-class Chess_Pieces:
+class PieceImages:
     """
-    Class to load svg images of chess pieces from disk as PIL Image objects.
+    Class to represent a piece image
     """
-
-    piece_to_img_dict: dict
-    """Dictionary where pieces are the keys and corresponding PIL Images are the values"""
-
-    def __init__(self, piece_theme: str, size: int = 70):
+    @staticmethod
+    def get_piece_image_dict(piece_theme: str, size: int = 70):
         root_path = resources.files("chess_gif")
         piece_svg_dir_path = os.path.join(root_path, "data", "piece", piece_theme)
 
         # Maps pieces to their corresponding .svg filenames
         piece_symbol_to_imgname_dict = {
-            "r": "bR",
-            "q": "bQ",
-            "n": "bN",
-            "k": "bK",
-            "p": "bP",
-            "b": "bB",
-            "R": "wR",
-            "Q": "wQ",
-            "N": "wN",
-            "K": "wK",
-            "P": "wP",
-            "B": "wB",
+            chess.Piece(chess.ROOK, chess.BLACK): "bR",
+            chess.Piece(chess.QUEEN, chess.BLACK): "bQ",
+            chess.Piece(chess.KNIGHT, chess.BLACK): "bN",
+            chess.Piece(chess.KING, chess.BLACK): "bK",
+            chess.Piece(chess.PAWN, chess.BLACK): "bP",
+            chess.Piece(chess.BISHOP, chess.BLACK): "bB",
+            chess.Piece(chess.ROOK, chess.WHITE): "wR",
+            chess.Piece(chess.QUEEN, chess.WHITE): "wQ",
+            chess.Piece(chess.KNIGHT, chess.WHITE): "wN",
+            chess.Piece(chess.KING, chess.WHITE): "wK",
+            chess.Piece(chess.PAWN, chess.WHITE): "wP",
+            chess.Piece(chess.BISHOP, chess.WHITE): "wB",
         }
 
         #: Dictionary where pieces are the keys and corresponding PIL Images are the values
-        self.piece_to_img_dict = dict()
+        piece_to_img_dict = dict()
 
         # Read the available piece theme's .svg images and save them as .png images of appropriate size
         for piece in piece_symbol_to_imgname_dict:
@@ -165,11 +162,12 @@ class Chess_Pieces:
             image_name = piece_symbol_to_imgname_dict[piece] + ".png"
             image.write_to_file(os.path.join(root_path, "Images", image_name))
 
-            self.piece_to_img_dict[piece] = Image.open(
+            piece_to_img_dict[piece] = Image.open(
                 os.path.join(root_path, "Images", image_name)
             )
 
+        return piece_to_img_dict
 
 if __name__ == "__main__":
-    obj = Chess_Image(("#ffe0b3", "#802b00"), side="2", piece_theme="dog")
-    obj.create_position(Board())
+    obj = ChessImage(("#ffe0b3", "#802b00"), side=15, piece_theme="merida")
+    obj.create_board_image(Board())

@@ -1,4 +1,4 @@
-from chess_gif.create_frame import Chess_Image
+from chess_gif.create_frame import ChessImage
 from chess import pgn as pgn_reader
 from chess import flip_vertical, Board
 from typing import Iterable
@@ -11,7 +11,7 @@ from pkg_resources import resource_string
 from .constants import ICE_THEME
 
 
-class Gifmaker:
+class GIFMaker:
     """
     Class for converting a chess ``PGN`` file to a ``GIF``.
 
@@ -36,8 +36,8 @@ class Gifmaker:
         Black vertical margin around the chess_board to be rendered in the GIF.
         Default ``0``.
     delay : `float`, optional
-        Delay in seconds betweeen individual moves.
-        Default ``1``.
+        Delay in milliseconds betweeen individual moves.
+        Default ``1000``.
 
 
     Example
@@ -72,9 +72,7 @@ class Gifmaker:
         kwargs.setdefault("side", 70)
         kwargs.setdefault("h_margin", 0)
         kwargs.setdefault("v_margin", 0)
-        kwargs.setdefault("delay", 1)
-
-        # pprint(kwargs)
+        kwargs.setdefault("delay", 1000)
 
         self.kwargs = kwargs
 
@@ -177,14 +175,10 @@ class Gifmaker:
                 # # Black's perspective
                 # print( '\n',current_board.transform( flip_vertical ))
 
-        # print('Hello')
-
-        print()
-
         print("White Moves:", white_timeline)
         print("Black Moves:", black_timeline)
 
-        obj = Chess_Image(
+        obj = ChessImage(
             colors=self.kwargs["colors"],
             side=self.kwargs["side"],
             piece_theme=self.kwargs["piece_theme"],
@@ -192,7 +186,7 @@ class Gifmaker:
             v_margin=self.kwargs["v_margin"],
         )
 
-        frames = list(map(lambda x: obj.create_position(x), self.board_states))
+        frames = list(map(lambda x: obj.create_board_image(x), self.board_states))
 
         durations = len(frames) * [self.kwargs["delay"]]
         white_diffs, black_diffs = [], []
@@ -202,19 +196,21 @@ class Gifmaker:
             white_diffs.append(wd)
             black_diffs.append(bd)
 
-        durations = [3, 1, 0.2]
-        for white_time, black_time in zip(white_diffs, black_diffs):
-            durations.append(white_time)
-            durations.append(black_time)
+        # durations = [3, 1, 0.2]
+        # for white_time, black_time in zip(white_diffs, black_diffs):
+        #     durations.append(white_time)
+        #     durations.append(black_time)
 
         print("Durations:", durations)
         print("No of frames:", len(frames))
         print("No of delays:", len(durations))
+        print("Keyword Args", self.kwargs)
+        print("Delay", self.kwargs["delay"])
 
         mimwrite(
             gif_file_path,
             frames,
-            duration=durations,
+            duration=self.kwargs["delay"],
             subrectangles=True,
             palettesize=256,  # default = 256
         )
