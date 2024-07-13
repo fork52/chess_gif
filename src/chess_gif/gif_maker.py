@@ -5,14 +5,14 @@ from typing import Iterable
 from pprint import pprint
 from pygifsicle import optimize as optimize_gif
 from imageio import mimwrite
-import os , io
+import os, io
 import errno
 from pkg_resources import resource_string
 from .constants import ICE_THEME
 
 
 class Gifmaker:
-    '''
+    """
     Class for converting a chess ``PGN`` file to a ``GIF``.
 
     Parameters
@@ -30,10 +30,10 @@ class Gifmaker:
     side : `int`, optional
         Size of the side of a single chess-square in pixels. Default ``70``.
     h_margin : `int`, optional
-        Black horizontal margin around the chess_board to be rendered in the GIF. 
+        Black horizontal margin around the chess_board to be rendered in the GIF.
         Default ``0``.
     v_margin : `int`, optional
-        Black vertical margin around the chess_board to be rendered in the GIF. 
+        Black vertical margin around the chess_board to be rendered in the GIF.
         Default ``0``.
     delay : `float`, optional
         Delay in seconds betweeen individual moves.
@@ -62,25 +62,26 @@ class Gifmaker:
 
         These are the publicly available themes taken from **lichess.org's** amazing `repository-lila <https://github.com/ornicar/lila>`_ .
 
-    '''
+    """
 
     def __init__(self, **kwargs: dict):
 
         # Set all the kwargs to default values if not provided
-        kwargs.setdefault('colors', ICE_THEME)
-        kwargs.setdefault('piece_theme', 'merida')
-        kwargs.setdefault('side', 70)
-        kwargs.setdefault('h_margin', 0)
-        kwargs.setdefault('v_margin', 0)
-        kwargs.setdefault('delay', 1)
+        kwargs.setdefault("colors", ICE_THEME)
+        kwargs.setdefault("piece_theme", "merida")
+        kwargs.setdefault("side", 70)
+        kwargs.setdefault("h_margin", 0)
+        kwargs.setdefault("v_margin", 0)
+        kwargs.setdefault("delay", 1)
 
         # pprint(kwargs)
 
         self.kwargs = kwargs
 
-    
-    def make_gif_from_pgn_string(self, pgn_string : str, gif_file_path: str = 'chess.gif'):
-        ''' 
+    def make_gif_from_pgn_string(
+        self, pgn_string: str, gif_file_path: str = "chess.gif"
+    ):
+        """
         Makes gif for the loaded pgn at the specified destination file path.
 
         Parameters
@@ -90,13 +91,14 @@ class Gifmaker:
 
         gif_file_path : str
             Destination directory to store the gif file.
-        '''
+        """
         pgn_file = io.StringIO(pgn_string)
-        self.__make_gif( pgn_file , gif_file_path )
+        self.__make_gif(pgn_file, gif_file_path)
 
-
-    def make_gif_from_pgn_file(self, pgn_file_path:str, gif_file_path: str = 'chess.gif'):
-        ''' 
+    def make_gif_from_pgn_file(
+        self, pgn_file_path: str, gif_file_path: str = "chess.gif"
+    ):
+        """
         Makes gif for the loaded pgn at the specified destination file path.
 
         Parameters
@@ -106,27 +108,28 @@ class Gifmaker:
 
         gif_file_path : str
             Destination directory to store the gif file.
-        '''
+        """
         # Check if file exists
         if not os.path.isfile(pgn_file_path):
-            raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path)
+            raise FileNotFoundError(
+                errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path
+            )
 
         pgn_file = open(pgn_file_path)
-        self.__make_gif( pgn_file , gif_file_path )
+        self.__make_gif(pgn_file, gif_file_path)
 
-
-    def __make_gif(self, pgn_file : str, gif_file_path: str):
-        '''
+    def __make_gif(self, pgn_file: str, gif_file_path: str):
+        """
         Makes gif for the loaded pgn at the specified destination file path.
 
         Parameters
         ----------
         pgn_file : file
-            A valid pgn string or 
+            A valid pgn string or
 
         gif_file_path : str
             Destination directory to store the gif file.
-        '''
+        """
 
         chess_game = pgn_reader.read_game(pgn_file)
 
@@ -176,24 +179,22 @@ class Gifmaker:
 
         # print('Hello')
 
-        
         print()
 
-        print('White Moves:', white_timeline)
-        print('Black Moves:', black_timeline)
-
+        print("White Moves:", white_timeline)
+        print("Black Moves:", black_timeline)
 
         obj = Chess_Image(
-            colors = self.kwargs['colors'],
-            side = self.kwargs['side'],
-            piece_theme = self.kwargs['piece_theme'],
-            h_margin = self.kwargs['h_margin'],
-            v_margin = self.kwargs['v_margin']
+            colors=self.kwargs["colors"],
+            side=self.kwargs["side"],
+            piece_theme=self.kwargs["piece_theme"],
+            h_margin=self.kwargs["h_margin"],
+            v_margin=self.kwargs["v_margin"],
         )
 
-        frames = list( map(lambda x: obj.create_position(x), self.board_states) )
+        frames = list(map(lambda x: obj.create_position(x), self.board_states))
 
-        durations = len(frames) * [self.kwargs['delay']]
+        durations = len(frames) * [self.kwargs["delay"]]
         white_diffs, black_diffs = [], []
         for i in range(len(white_timeline) - 1):
             wd = round(white_timeline[i] - white_timeline[i + 1], 2)
@@ -206,23 +207,19 @@ class Gifmaker:
             durations.append(white_time)
             durations.append(black_time)
 
-
-
-        print('Durations:', durations)
-        print('No of frames:', len(frames))
-        print('No of delays:', len(durations))
-
+        print("Durations:", durations)
+        print("No of frames:", len(frames))
+        print("No of delays:", len(durations))
 
         mimwrite(
             gif_file_path,
             frames,
-            duration = durations,
-            subrectangles = True,
-            palettesize = 256  # default = 256
+            duration=durations,
+            subrectangles=True,
+            palettesize=256,  # default = 256
         )
 
         optimize_gif(gif_file_path)
-
 
 
 if __name__ == "__main__":
