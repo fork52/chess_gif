@@ -9,7 +9,7 @@ imageio = "==2.11.0"
 pillow = "==10.3.0"
 pygifsicle = "==1.0.5"
 pyvips = "==2.1.15"
-requests = "==2.32.0"
+requests = "==2.32.2"
 
 [dev-packages]
 
