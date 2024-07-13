@@ -1,4 +1,4 @@
-from typing import Iterable, List, Tuple
+from typing import Tuple
 from PIL import Image, ImageDraw
 import os
 from pyvips import Image as VipsImage
@@ -138,7 +138,7 @@ class Chess_Pieces:
         piece_svg_dir_path = os.path.join(root_path, "data", "piece", piece_theme)
 
         # Maps pieces to their corresponding .svg filenames
-        piecesymbol_to_imgname_dict = {
+        piece_symbol_to_imgname_dict = {
             "r": "bR",
             "q": "bQ",
             "n": "bN",
@@ -157,12 +157,12 @@ class Chess_Pieces:
         self.piece_to_img_dict = dict()
 
         # Read the available piece theme's .svg images and save them as .png images of appropriate size
-        for piece in piecesymbol_to_imgname_dict:
+        for piece in piece_symbol_to_imgname_dict:
             piece_svg_path = os.path.join(
-                piece_svg_dir_path, piecesymbol_to_imgname_dict[piece] + ".svg"
+                piece_svg_dir_path, piece_symbol_to_imgname_dict[piece] + ".svg"
             )
             image = VipsImage.thumbnail(piece_svg_path, size, height=size)
-            image_name = piecesymbol_to_imgname_dict[piece] + ".png"
+            image_name = piece_symbol_to_imgname_dict[piece] + ".png"
             image.write_to_file(os.path.join(root_path, "Images", image_name))
 
             self.piece_to_img_dict[piece] = Image.open(
