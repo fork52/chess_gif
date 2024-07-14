@@ -1,4 +1,3 @@
-import pytest
 from chess_gif.gif_maker import GIFMaker
 from chess_gif.constants import *
 
@@ -73,18 +72,17 @@ Qe3+ {[%clk 0:01:54.3][%timestamp 41]} 14. Be2 {[%clk 0:01:49.2][%timestamp
 44]} 18. O-O-O {[%clk 0:01:38.8][%timestamp 11]} 18... Rfd8 {[%clk
 0:01:34][%timestamp 14]} 0-1"""
 
-# def test_basic_test():
-#     try:
-#         obj = Gifmaker(delay=2)
-#         obj.make_gif_from_pgn_string(pgn_string, 'sample.gif')
-#         assert True
-#     except:
-#         assert False
-
+def test_basic_test():
+    try:
+        obj = GIFMaker(delay=1000)
+        obj.make_gif_from_pgn_string(pgn_string, 'sample.gif')
+        assert True
+    except:
+        assert False
 
 def test_clocks_test():
     try:
-        obj = GIFMaker(delay=10)
+        obj = GIFMaker(delay=1000)
         obj.make_gif_from_pgn_string(pgn_string_with_clks_chess, 'sample.gif')
         assert True
     except:

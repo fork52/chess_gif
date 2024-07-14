@@ -60,7 +60,7 @@ This is how a sample PGN file looks like.
 [Round "29"]
 [White "Fischer, Robert J."]
 [Black "Spassky, Boris V."]
-[Result "1/2-1/2"]
+[Result "1/2-1/2"]s
 
 1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 {This opening is called the Ruy Lopez.}
 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 d6 8. c3 O-O 9. h3 Nb8 10. d4 Nbd7
@@ -77,9 +77,9 @@ Save this text in a file with .pgn extension.
 Run the following code to create a GIF !
 
 ```python3 
-    >>> from chess_gif.gif_maker import Gifmaker
-    >>> obj = Gifmaker(pgn_file_path, h_margin = 20 , v_margin = 80 )
-    >>> obj.make_gif('chess_game.gif')
+    >>> from chess_gif.gif_maker import GIFMaker
+    >>> obj = GIFMaker(delay=1000, h_margin = 20 , v_margin = 80)
+    >>> obj.make_gif_from_pgn_file('sample.pgn', 'chess_gif.gif')
 ```
 
 The GIF should be generated in your current working directory.

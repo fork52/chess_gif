@@ -1,13 +1,10 @@
 from chess_gif.create_frame import ChessImage
 from chess import pgn as pgn_reader
 from chess import flip_vertical, Board
-from typing import Iterable
-from pprint import pprint
-from pygifsicle import optimize as optimize_gif
-from imageio import mimwrite
+import pygifsicle
+import imageio
 import os, io
 import errno
-from pkg_resources import resource_string
 from .constants import ICE_THEME
 
 
@@ -101,7 +98,7 @@ class GIFMaker:
 
         Parameters
         ----------
-        pgn_file : file
+        pgn_file_path : str
             A pgn file containing chess game
 
         gif_file_path : str
@@ -113,7 +110,7 @@ class GIFMaker:
                 errno.ENOENT, os.strerror(errno.ENOENT), pgn_file_path
             )
 
-        pgn_file = open(pgn_file_path)
+        pgn_file = open(pgn_file_path, 'r')
         self.__make_gif(pgn_file, gif_file_path)
 
     def __make_gif(self, pgn_file: str, gif_file_path: str):
@@ -128,55 +125,14 @@ class GIFMaker:
         gif_file_path : str
             Destination directory to store the gif file.
         """
-
         chess_game = pgn_reader.read_game(pgn_file)
-
-        # Stores the headers in the pgn
-        self.header_info = chess_game.headers
-
-        # self.white_player = self.header_info['White']
-        # self.black_player = self.header_info['Black']
-        # self.BlackElo = self.header_info['BlackElo']
-        # self.WhiteElo = self.header_info['WhiteElo']
-
-        # print('White Player:',self.white_player)
-        # print('Black Player:',self.black_player,'\n')
-
-        # print( 'WhiteElo:', self.WhiteElo )
-        # print( 'BlackElo:', self.BlackElo )
-
-        # get string notation of the game
-        # print(str( chess_game.game()).replace('\n','') )
-
-        # get the start position
-        # print(chess_game.board() )
-
-        white_timeline = []
-        black_timeline = []
-        self.board_states = [Board()]
+        board_states = [Board()]
 
         main_line_itr = chess_game.mainline()
         for node in main_line_itr:
             if node.parent is not None:
-                current_move = node.san()
-                time_left = node.clock()
-
                 current_board = node.board()
-                self.board_states.append(current_board)
-
-                if current_board.turn:
-                    white_timeline.append(time_left)
-                else:
-                    black_timeline.append(time_left)
-
-                # White's perspective
-                # print('\n',current_board)
-
-                # # Black's perspective
-                # print( '\n',current_board.transform( flip_vertical ))
-
-        print("White Moves:", white_timeline)
-        print("Black Moves:", black_timeline)
+                board_states.append(current_board)
 
         obj = ChessImage(
             colors=self.kwargs["colors"],
@@ -186,28 +142,9 @@ class GIFMaker:
             v_margin=self.kwargs["v_margin"],
         )
 
-        frames = list(map(lambda x: obj.create_board_image(x), self.board_states))
+        frames = list(map(lambda x: obj.create_board_image(x), board_states))
 
-        durations = len(frames) * [self.kwargs["delay"]]
-        white_diffs, black_diffs = [], []
-        for i in range(len(white_timeline) - 1):
-            wd = round(white_timeline[i] - white_timeline[i + 1], 2)
-            bd = round(black_timeline[i] - black_timeline[i + 1], 2)
-            white_diffs.append(wd)
-            black_diffs.append(bd)
-
-        # durations = [3, 1, 0.2]
-        # for white_time, black_time in zip(white_diffs, black_diffs):
-        #     durations.append(white_time)
-        #     durations.append(black_time)
-
-        print("Durations:", durations)
-        print("No of frames:", len(frames))
-        print("No of delays:", len(durations))
-        print("Keyword Args", self.kwargs)
-        print("Delay", self.kwargs["delay"])
-
-        mimwrite(
+        imageio.mimwrite(
             gif_file_path,
             frames,
             duration=self.kwargs["delay"],
@@ -215,7 +152,7 @@ class GIFMaker:
             palettesize=256,  # default = 256
         )
 
-        optimize_gif(gif_file_path)
+        pygifsicle.optimize(gif_file_path)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,6 @@ import chess
 from chess import Board
 from importlib import resources
 
-
 class ChessImage:
     """
     Creates Single Image frames for rendering the GIFs
@@ -108,7 +107,7 @@ class ChessImage:
 
     def create_board_image(self, board: Board) -> Image.Image:
         """
-        Renders passed current_postion on to the chess board.
+        Renders `board` on to the base chess image.
         """
         board_img = self.board_img.copy()
         for rank_index in range(7, -1, -1):
@@ -127,7 +126,7 @@ class ChessImage:
 
 class PieceImages:
     """
-    Class to represent a piece image
+    Class to help load PieceImages
     """
     @staticmethod
     def get_piece_image_dict(piece_theme: str, size: int = 70):
